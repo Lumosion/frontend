@@ -1,0 +1,67 @@
+/* 简化版语法高亮 (Prism-like) */
+code[class*='language-'],
+pre[class*='language-'],
+pre code {
+  color: #e5eaff;
+  font-family: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+  font-size: 13px;
+  text-shadow: none;
+  tab-size: 2;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6b7397;
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: #c9d0e8;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ff9aa2;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #25d4a8;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #ffb84d;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #8a5cff;
+  font-weight: 600;
+}
+
+.token.function,
+.token.class-name {
+  color: #6c8cff;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #ffb84d;
+}

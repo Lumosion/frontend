@@ -1,0 +1,2727 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="前端技术全景指南：HTML/CSS/JavaScript/框架/工程化的原理讲解与实战演示" />
+  <title>前端技术全景指南 · 原理 + 实战</title>
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="./assets/css/prism.css" />
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="#home" class="logo">
+        <span class="logo-mark">FE</span>
+        <span class="logo-text">前端全景指南</span>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="#html">HTML</a>
+        <a href="#css">CSS</a>
+        <a href="#javascript">JavaScript</a>
+        <a href="#framework">框架</a>
+        <a href="#engineering">工程化</a>
+        <a href="#performance">性能</a>
+        <a href="#advanced">进阶</a>
+        <a href="#miniprogram">小程序</a>
+        <a href="#gamedev">游戏</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" id="navToggle" aria-label="切换导航菜单" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mask" id="navMask"></div>
+    </div>
+  </header>
+
+  <!-- 首页 Hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1 class="hero-title">
+        从 <span class="grad">0 到 1</span> 掌握前端技术
+      </h1>
+      <p class="hero-subtitle">
+        覆盖 HTML / CSS / JavaScript / 框架 / 工程化 / 性能优化的<strong>原理讲解</strong>与<strong>可交互演示</strong>
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#html">开始学习</a>
+        <a class="btn btn-ghost" href="#javascript">进入实战</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>9</b><span>核心模块</span></div>
+        <div><b>45+</b><span>原理讲解</span></div>
+        <div><b>30+</b><span>交互演示</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container main-content">
+
+    <!-- ========== HTML ========== -->
+    <section id="html" class="topic">
+      <h2 class="topic-title">① HTML — 网页的骨架</h2>
+      <p class="topic-desc">
+        HTML（HyperText Markup Language）是一种<strong>标记语言</strong>，用语义化标签描述网页结构。
+        浏览器解析 HTML 生成 <em>DOM 树</em>，是渲染流程的起点。
+      </p>
+
+      <div class="card">
+        <h3>1.1 渲染原理</h3>
+        <ol class="step-list">
+          <li>解析 HTML → 构建 <b>DOM 树</b></li>
+          <li>解析 CSS → 构建 <b>CSSOM 树</b></li>
+          <li>合并生成 <b>渲染树（Render Tree）</b></li>
+          <li>布局（Layout / Reflow）：计算节点几何信息</li>
+          <li>绘制（Paint）：将像素填充到图层</li>
+          <li>合成（Composite）：交给 GPU 合成为最终画面</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3>1.2 语义化标签示例</h3>
+<pre><code class="language-html">&lt;header&gt;头部&lt;/header&gt;
+&lt;nav&gt;导航&lt;/nav&gt;
+&lt;main&gt;
+  &lt;article&gt;文章&lt;/article&gt;
+  &lt;aside&gt;侧栏&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;底部&lt;/footer&gt;</code></pre>
+        <p>语义化的优势：可访问性（无障碍）、SEO 友好、代码可读性强。</p>
+      </div>
+
+      <div class="card demo">
+        <h3>1.3 实战演示：表单与验证</h3>
+        <form class="demo-form" id="demoForm">
+          <label>邮箱：<input type="email" required placeholder="请输入邮箱" /></label>
+          <label>年龄：<input type="number" min="1" max="120" required /></label>
+          <label>个人主页：<input type="url" placeholder="https://" /></label>
+          <button type="submit" class="btn btn-primary">提交</button>
+          <p class="demo-output" id="formOutput"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ========== CSS ========== -->
+    <section id="css" class="topic">
+      <h2 class="topic-title">② CSS — 视觉与布局</h2>
+      <p class="topic-desc">
+        CSS（Cascading Style Sheets）控制元素的外观与排版。核心机制：
+        <strong>层叠（Cascade）</strong>、<strong>继承（Inheritance）</strong>、<strong>特异性（Specificity）</strong>。
+      </p>
+
+      <div class="card">
+        <h3>2.1 盒模型（Box Model）</h3>
+        <p>每个元素由 <code>content → padding → border → margin</code> 四层组成。</p>
+        <div class="box-demo">
+          <div class="bm-margin">margin
+            <div class="bm-border">border
+              <div class="bm-padding">padding
+                <div class="bm-content">content</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>通过 <code>box-sizing: border-box</code> 可让 width 包含 padding+border，更易布局。</p>
+      </div>
+
+      <div class="card demo">
+        <h3>2.2 Flexbox 演示（可调）</h3>
+        <div class="ctrl-row">
+          <label>justify-content：
+            <select id="flexJustify">
+              <option>flex-start</option><option>center</option>
+              <option>flex-end</option><option>space-between</option>
+              <option>space-around</option><option>space-evenly</option>
+            </select>
+          </label>
+          <label>align-items：
+            <select id="flexAlign">
+              <option>stretch</option><option>flex-start</option>
+              <option>center</option><option>flex-end</option>
+            </select>
+          </label>
+        </div>
+        <div class="flex-stage" id="flexStage">
+          <div>1</div><div>2</div><div>3</div><div>4</div>
+        </div>
+      </div>
+
+      <div class="card demo">
+        <h3>2.3 Grid 网格布局</h3>
+        <div class="grid-stage">
+          <div style="grid-area: a">A · header</div>
+          <div style="grid-area: b">B · sidebar</div>
+          <div style="grid-area: c">C · main</div>
+          <div style="grid-area: d">D · footer</div>
+        </div>
+<pre><code class="language-css">.grid-stage {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas:
+    "a a"
+    "b c"
+    "d d";
+}</code></pre>
+      </div>
+
+      <div class="card demo">
+        <h3>2.4 动画与过渡</h3>
+        <div class="anim-stage">
+          <div class="anim-ball" id="animBall"></div>
+        </div>
+        <button class="btn btn-primary" id="animBtn">点击触发动画</button>
+        <p>原理：<code>transform</code> 与 <code>opacity</code> 由合成线程处理，<strong>不触发重排</strong>，性能最佳。</p>
+      </div>
+    </section>
+
+    <!-- ========== JavaScript ========== -->
+    <section id="javascript" class="topic">
+      <h2 class="topic-title">③ JavaScript — 让页面活起来</h2>
+      <p class="topic-desc">
+        JavaScript 是一门<strong>单线程、基于原型、动态弱类型</strong>的语言，运行于 V8 等引擎之上，通过<strong>事件循环</strong>实现并发。
+      </p>
+
+      <div class="card">
+        <h3>3.1 数据类型</h3>
+        <ul>
+          <li>原始类型：<code>string / number / boolean / null / undefined / symbol / bigint</code></li>
+          <li>引用类型：<code>object</code>（函数、数组、Date 等都是对象）</li>
+          <li>检测：<code>typeof</code>（无法区分 null / 数组）；推荐 <code>Object.prototype.toString.call(x)</code></li>
+        </ul>
+      </div>
+
+      <div class="card demo">
+        <h3>3.2 闭包（Closure）</h3>
+        <p>函数与其词法作用域的组合。即使外部函数已返回，内部函数仍能访问其变量。</p>
+<pre><code class="language-js">function counter() {
+  let n = 0;
+  return () =&gt; ++n;
+}
+const inc = counter();
+inc(); // 1
+inc(); // 2</code></pre>
+        <button class="btn btn-primary" id="closureBtn">点击计数</button>
+        <span class="badge" id="closureOut">0</span>
+      </div>
+
+      <div class="card">
+        <h3>3.3 原型链</h3>
+        <p>每个对象都有一个隐式原型 <code>__proto__</code> 指向其构造函数的 <code>prototype</code>，访问属性时沿链向上查找直到 <code>null</code>。</p>
+<pre><code class="language-js">function Animal(name) { this.name = name; }
+Animal.prototype.say = function () { return 'I am ' + this.name; };
+const a = new Animal('Tom');
+a.say();              // I am Tom
+a.__proto__ === Animal.prototype; // true</code></pre>
+      </div>
+
+      <div class="card demo">
+        <h3>3.4 事件循环（Event Loop）</h3>
+        <p>同步代码 → 微任务（Promise.then / queueMicrotask）→ 宏任务（setTimeout / I/O）→ 渲染 → 下一轮。</p>
+        <button class="btn btn-primary" id="loopBtn">运行演示</button>
+        <pre class="demo-output" id="loopOut"></pre>
+      </div>
+
+      <div class="card demo">
+        <h3>3.5 异步：Promise & async/await</h3>
+<pre><code class="language-js">async function loadUser(id) {
+  const res = await fetch('/api/user/' + id);
+  if (!res.ok) throw new Error('Network');
+  return res.json();
+}</code></pre>
+        <button class="btn btn-primary" id="asyncBtn">模拟异步请求</button>
+        <pre class="demo-output" id="asyncOut"></pre>
+      </div>
+
+      <div class="card demo">
+        <h3>3.6 防抖 & 节流</h3>
+        <p>移动鼠标查看触发次数，对比效果：</p>
+        <div class="dt-stage" id="dtStage">在此区域内移动鼠标</div>
+        <div class="dt-meta">
+          <span>原始：<b id="rawCount">0</b></span>
+          <span>防抖（300ms）：<b id="debCount">0</b></span>
+          <span>节流（300ms）：<b id="thrCount">0</b></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 框架 ========== -->
+    <section id="framework" class="topic">
+      <h2 class="topic-title">④ 现代框架 — React / Vue</h2>
+      <p class="topic-desc">
+        框架本质：用<strong>声明式 UI</strong> + <strong>响应式数据</strong>替代手动操作 DOM。底层都基于<strong>虚拟 DOM</strong> 与 <strong>Diff 算法</strong>。
+      </p>
+
+      <div class="card">
+        <h3>4.1 虚拟 DOM 原理</h3>
+        <ol class="step-list">
+          <li>用 JS 对象描述 UI 结构（VNode）</li>
+          <li>状态变化时生成新的 VNode 树</li>
+          <li>通过 Diff 算法对比新旧树，得到最小变更集（Patch）</li>
+          <li>仅更新真实 DOM 中变更的节点</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3>4.2 React 示例（JSX）</h3>
+<pre><code class="language-jsx">import { useState } from 'react';
+
+export function Counter() {
+  const [n, setN] = useState(0);
+  return (
+    &lt;button onClick={() =&gt; setN(n + 1)}&gt;
+      点击次数：{n}
+    &lt;/button&gt;
+  );
+}</code></pre>
+      </div>
+
+      <div class="card">
+        <h3>4.3 Vue 3 示例（Composition API）</h3>
+<pre><code class="language-html">&lt;script setup&gt;
+import { ref } from 'vue';
+const n = ref(0);
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click="n++"&gt;点击次数：{{ n }}&lt;/button&gt;
+&lt;/template&gt;</code></pre>
+      </div>
+
+      <div class="card demo">
+        <h3>4.4 用原生 JS 实现一个迷你响应式</h3>
+        <p>双向绑定输入框：</p>
+        <input id="reactiveInput" placeholder="试着输入文字..." />
+        <p>实时输出：<b id="reactiveOut"></b></p>
+<pre><code class="language-js">function reactive(obj, onChange) {
+  return new Proxy(obj, {
+    set(t, k, v) { t[k] = v; onChange(k, v); return true; }
+  });
+}
+const state = reactive({ msg: '' }, (k, v) =&gt; render(v));</code></pre>
+      </div>
+    </section>
+
+    <!-- ========== 工程化 ========== -->
+    <section id="engineering" class="topic">
+      <h2 class="topic-title">⑤ 工程化 — 让项目可维护</h2>
+      <p class="topic-desc">
+        现代前端工程涉及：包管理、模块化、构建打包、代码规范、测试、CI/CD。
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>5.1 模块化演进</h3>
+          <ul>
+            <li>IIFE 立即执行函数 → 全局污染解决方案</li>
+            <li>CommonJS（Node.js）→ <code>require / module.exports</code></li>
+            <li>AMD / CMD（浏览器异步）</li>
+            <li><b>ES Modules</b>（标准）→ <code>import / export</code></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>5.2 构建工具</h3>
+          <ul>
+            <li><b>Webpack</b>：万物皆 Loader / Plugin</li>
+            <li><b>Vite</b>：基于 ESM + esbuild，秒级冷启动</li>
+            <li><b>Rollup</b>：库打包首选，Tree-shaking 出色</li>
+            <li><b>esbuild / SWC</b>：底层 Go/Rust 加速器</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>5.3 包管理</h3>
+          <ul>
+            <li><code>npm</code> / <code>yarn</code> / <code>pnpm</code></li>
+            <li><b>pnpm</b> 通过硬链接节省磁盘 + 严格依赖隔离</li>
+            <li><code>package.json</code> 中 <code>^</code> / <code>~</code> 的语义</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>5.4 代码规范</h3>
+          <ul>
+            <li><b>ESLint</b>：JS/TS 静态检查</li>
+            <li><b>Prettier</b>：统一格式化</li>
+            <li><b>Husky + lint-staged</b>：提交前自动校验</li>
+            <li><b>TypeScript</b>：类型安全的 JavaScript</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 性能 ========== -->
+    <section id="performance" class="topic">
+      <h2 class="topic-title">⑥ 性能优化 — 极致体验</h2>
+
+      <div class="card">
+        <h3>6.1 关键指标（Core Web Vitals）</h3>
+        <ul>
+          <li><b>LCP</b>（最大内容绘制）≤ 2.5s</li>
+          <li><b>FID / INP</b>（交互延迟）≤ 100ms / 200ms</li>
+          <li><b>CLS</b>（累积布局偏移）≤ 0.1</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>6.2 优化清单</h3>
+        <div class="grid-2">
+          <div>
+            <h4>加载优化</h4>
+            <ul>
+              <li>资源压缩（gzip / brotli）</li>
+              <li>HTTP 缓存（强缓存 + 协商缓存）</li>
+              <li>CDN 分发 / HTTP/2 多路复用</li>
+              <li>代码分割 + 路由懒加载</li>
+              <li>图片懒加载 + WebP/AVIF</li>
+            </ul>
+          </div>
+          <div>
+            <h4>运行时优化</h4>
+            <ul>
+              <li>虚拟列表渲染长列表</li>
+              <li>避免强制同步布局</li>
+              <li>使用 <code>transform</code> 实现动画</li>
+              <li>Web Worker 卸载主线程</li>
+              <li>合理使用 <code>requestIdleCallback</code></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card demo">
+        <h3>6.3 实测：requestAnimationFrame 帧率监测</h3>
+        <button class="btn btn-primary" id="fpsBtn">开始/停止 FPS 检测</button>
+        <span class="badge">FPS：<b id="fpsOut">--</b></span>
+      </div>
+    </section>
+
+    <!-- ========== 进阶与新技术 ========== -->
+    <section id="advanced" class="topic">
+      <h2 class="topic-title">⑦ 进阶与新技术 — 现代 Web 能力</h2>
+      <p class="topic-desc">
+        浏览器早已不只是「文档查看器」。下面这些 API 让 Web 拥有了实时通信、多线程、原生级性能、离线能力与硬件访问。
+      </p>
+
+      <!-- 7.1 WebSocket -->
+      <div class="card demo">
+        <h3>7.1 WebSocket — 全双工实时通信</h3>
+        <p>
+          基于 TCP 的<strong>持久化双向</strong>协议，握手通过 HTTP <code>Upgrade</code> 完成，之后客户端与服务器均可主动推送消息，
+          典型场景：聊天、协同编辑、实时行情、游戏同步。
+        </p>
+<pre><code class="language-js">const ws = new WebSocket('wss://echo.example.com');
+
+ws.onopen    = () =&gt; ws.send('hello');
+ws.onmessage = (e) =&gt; console.log('收到：', e.data);
+ws.onclose   = () =&gt; console.log('连接关闭');
+ws.onerror   = (err) =&gt; console.error(err);</code></pre>
+        <p class="muted">下方演示使用本地<strong>模拟服务端</strong>（Promise + setTimeout），离线也能体验消息往返：</p>
+        <div class="ws-stage">
+          <div class="ws-log" id="wsLog"></div>
+          <div class="ws-input">
+            <input id="wsInput" placeholder="输入消息后回车发送..." />
+            <button class="btn btn-primary" id="wsSend">发送</button>
+            <button class="btn btn-ghost" id="wsClose">关闭连接</button>
+          </div>
+        </div>
+        <p>
+          <b>对比：</b>HTTP 轮询（高延迟、资源浪费）→ 长轮询 → SSE（服务端单向推送）→ <b>WebSocket（双向实时）</b>。
+        </p>
+      </div>
+
+      <!-- 7.2 SSE -->
+      <div class="card demo">
+        <h3>7.2 Server-Sent Events (SSE) — 服务端单向推送</h3>
+        <p>
+          基于 HTTP，服务器持续向客户端推送 <code>text/event-stream</code>。比 WebSocket 简单，
+          自动断线重连。AI 流式输出（如 ChatGPT 打字效果）就是典型应用。
+        </p>
+<pre><code class="language-js">const es = new EventSource('/api/stream');
+es.onmessage = (e) =&gt; console.log(e.data);
+es.addEventListener('done', () =&gt; es.close());</code></pre>
+        <button class="btn btn-primary" id="sseBtn">模拟流式回复</button>
+        <pre class="demo-output" id="sseOut"></pre>
+      </div>
+
+      <!-- 7.3 Web Workers -->
+      <div class="card demo">
+        <h3>7.3 Web Workers — 浏览器多线程</h3>
+        <p>
+          JavaScript 主线程负责 UI 与脚本，<strong>耗时计算会卡顿页面</strong>。Worker 在独立线程运行，通过
+          <code>postMessage</code> 与主线程通信，无 DOM 访问权限。
+        </p>
+<pre><code class="language-js">// main.js
+const worker = new Worker('/worker.js');
+worker.postMessage(40);
+worker.onmessage = (e) =&gt; console.log('结果：', e.data);
+
+// worker.js
+self.onmessage = (e) =&gt; {
+  const fib = (n) =&gt; (n &lt; 2 ? n : fib(n - 1) + fib(n - 2));
+  self.postMessage(fib(e.data));
+};</code></pre>
+        <div class="ctrl-row">
+          <button class="btn btn-primary" id="heavyMain">主线程计算 fib(38)</button>
+          <button class="btn btn-primary" id="heavyWorker">Worker 计算 fib(38)</button>
+        </div>
+        <p>对比时观察右上角小球是否依然丝滑：<span class="ws-spinner" id="uiSpin"></span></p>
+        <pre class="demo-output" id="workerOut"></pre>
+      </div>
+
+      <!-- 7.4 Service Worker / PWA -->
+      <div class="card">
+        <h3>7.4 Service Worker & PWA — 离线可用 / 可安装</h3>
+        <p>
+          Service Worker 是浏览器与网络之间的<strong>代理层</strong>，可拦截请求、读写 Cache，实现离线访问、推送通知、后台同步。
+          配合 <code>manifest.json</code> 即可让网站像原生 App 一样安装到桌面。
+        </p>
+<pre><code class="language-js">// 注册
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
+
+// sw.js
+self.addEventListener('install', (e) =&gt; {
+  e.waitUntil(
+    caches.open('v1').then((c) =&gt; c.addAll(['/', '/main.js', '/style.css']))
+  );
+});
+
+self.addEventListener('fetch', (e) =&gt; {
+  e.respondWith(caches.match(e.request).then((r) =&gt; r || fetch(e.request)));
+});</code></pre>
+        <ul>
+          <li><b>缓存策略</b>：Cache First / Network First / Stale-While-Revalidate</li>
+          <li><b>生命周期</b>：install → activate → fetch / push / sync</li>
+          <li><b>限制</b>：仅 HTTPS（localhost 除外）、独立线程、无 DOM</li>
+        </ul>
+      </div>
+
+      <!-- 7.5 WebAssembly -->
+      <div class="card">
+        <h3>7.5 WebAssembly (Wasm) — 接近原生的性能</h3>
+        <p>
+          一种<strong>二进制指令格式</strong>，可由 C / C++ / Rust / Go 编译而来，在浏览器中以接近原生速度运行。
+          适合：音视频处理、3D 引擎、游戏、加密、AI 推理。
+        </p>
+<pre><code class="language-js">const { instance } = await WebAssembly.instantiateStreaming(
+  fetch('/add.wasm')
+);
+console.log(instance.exports.add(1, 2)); // 3</code></pre>
+        <p class="muted">代表项目：FFmpeg.wasm、Figma 渲染引擎、AutoCAD Web、Photoshop Web。</p>
+      </div>
+
+      <!-- 7.6 Canvas / WebGL -->
+      <div class="card demo">
+        <h3>7.6 Canvas — 像素级绘图</h3>
+        <p>
+          <code>&lt;canvas&gt;</code> 通过 JS 绘制 2D / 3D 图形。下方为粒子动画演示（点击切换）：
+        </p>
+        <canvas id="particleCanvas" width="800" height="220"></canvas>
+        <button class="btn btn-primary" id="canvasBtn" style="margin-top: 10px">
+          切换粒子模式
+        </button>
+        <p>
+          <b>WebGL / WebGPU</b>：在 Canvas 之上提供 GPU 加速 API，是 Three.js、Babylon.js、Unity Web 的底层。
+          WebGPU（2023 起）是更现代、更接近 Vulkan/Metal 的下一代标准。
+        </p>
+      </div>
+
+      <!-- 7.7 Web Components -->
+      <div class="card demo">
+        <h3>7.7 Web Components — 浏览器原生组件化</h3>
+        <p>
+          三大基石：<b>Custom Elements</b>（自定义元素）、<b>Shadow DOM</b>（样式封装）、<b>HTML Templates</b>。
+          无需框架即可写出可复用、样式隔离的组件。
+        </p>
+<pre><code class="language-js">class FancyBtn extends HTMLElement {
+  constructor() {
+    super();
+    const root = this.attachShadow({ mode: 'open' });
+    root.innerHTML = `
+      &lt;style&gt;button{padding:8px 16px;border-radius:8px;}&lt;/style&gt;
+      &lt;button&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/button&gt;`;
+  }
+}
+customElements.define('fancy-btn', FancyBtn);</code></pre>
+        <p>真实的自定义元素（已注册）：</p>
+        <fancy-btn>我是 Web Component！</fancy-btn>
+      </div>
+
+      <!-- 7.8 IndexedDB / 存储 -->
+      <div class="card demo">
+        <h3>7.8 浏览器存储全景</h3>
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>方案</th><th>容量</th><th>结构</th><th>适用场景</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Cookie</td><td>~4KB</td><td>键值（随请求发送）</td><td>会话、身份</td></tr>
+            <tr><td>localStorage</td><td>~5MB</td><td>同步键值</td><td>用户偏好</td></tr>
+            <tr><td>sessionStorage</td><td>~5MB</td><td>同步键值，会话级</td><td>临时数据</td></tr>
+            <tr><td><b>IndexedDB</b></td><td>数百 MB+</td><td>异步对象数据库</td><td>大数据、离线</td></tr>
+            <tr><td>Cache Storage</td><td>大</td><td>Request/Response</td><td>PWA 离线</td></tr>
+          </tbody>
+        </table>
+        <p>下方使用 <b>localStorage</b> 演示笔记持久化（刷新仍在）：</p>
+        <textarea id="noteArea" placeholder="写点什么... 自动保存"></textarea>
+        <p class="muted">已保存：<span id="noteSaved">--</span></p>
+      </div>
+
+      <!-- 7.9 文件 / 拖拽 -->
+      <div class="card demo">
+        <h3>7.9 File API & 拖拽上传</h3>
+        <p>支持 <code>FileReader</code>、<code>Blob</code>、<code>URL.createObjectURL</code>，无需上传即可在前端预览图片。</p>
+        <div class="drop-zone" id="dropZone">
+          📁 拖拽图片到此处，或点击选择文件
+          <input type="file" id="fileInput" accept="image/*" hidden />
+        </div>
+        <div class="preview" id="filePreview"></div>
+      </div>
+
+      <!-- 7.10 其他现代 API -->
+      <div class="card">
+        <h3>7.10 还有更多现代 Web API</h3>
+        <div class="grid-2">
+          <div>
+            <h4>实时与媒体</h4>
+            <ul>
+              <li><b>WebRTC</b>：浏览器之间 P2P 音视频/数据</li>
+              <li><b>Media Capture</b>：getUserMedia 摄像头/麦克风</li>
+              <li><b>Web Audio API</b>：实时音频合成与可视化</li>
+              <li><b>WebCodecs</b>：低层级编解码（4K 实时）</li>
+            </ul>
+          </div>
+          <div>
+            <h4>设备与硬件</h4>
+            <ul>
+              <li><b>WebUSB / Web Serial / Web Bluetooth</b></li>
+              <li><b>Web NFC</b>：读写 NFC 标签</li>
+              <li><b>Geolocation</b>：定位</li>
+              <li><b>Sensor API</b>：陀螺仪/加速度</li>
+            </ul>
+          </div>
+          <div>
+            <h4>性能与体验</h4>
+            <ul>
+              <li><b>View Transitions API</b>：原生页面过渡动画</li>
+              <li><b>Container Queries</b>：基于容器的响应式</li>
+              <li><b>Popover API / Dialog</b>：原生弹层</li>
+              <li><b>Speculation Rules</b>：预渲染下一页</li>
+            </ul>
+          </div>
+          <div>
+            <h4>AI 与未来</h4>
+            <ul>
+              <li><b>WebGPU</b>：下一代 GPU 接口，可跑本地 LLM</li>
+              <li><b>Built-in AI (Chrome)</b>：浏览器内置 Gemini Nano</li>
+              <li><b>WebTransport</b>：基于 HTTP/3 的低延迟通道</li>
+              <li><b>Origin Private File System</b>：高性能文件系统</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7.11 视频通话：getUserMedia + WebRTC + WebSocket 信令 -->
+      <div class="card demo">
+        <h3>7.11 视频通话 — 媒体捕获 + WebRTC + WebSocket 信令</h3>
+        <p>
+          视频通话由<strong>三件套</strong>协作完成：
+        </p>
+        <ul>
+          <li>📹 <b>getUserMedia</b>：调用摄像头/麦克风，拿到 <code>MediaStream</code></li>
+          <li>🔗 <b>WebRTC（RTCPeerConnection）</b>：在两端建立 <strong>P2P</strong> 媒体通道，自动处理编解码、丢包、抖动、NAT 穿透</li>
+          <li>📡 <b>WebSocket（信令）</b>：交换 <code>SDP</code>（offer/answer）与 <code>ICE candidate</code>，建连后媒体流不经服务器</li>
+        </ul>
+
+        <h4 style="color: var(--primary); margin-top: 14px">协议交互流程</h4>
+        <ol class="step-list">
+          <li>双方用 <code>getUserMedia</code> 获取本地音视频轨道</li>
+          <li>A 创建 <code>RTCPeerConnection</code> → <code>createOffer()</code> → 通过 WS 把 SDP 发给 B</li>
+          <li>B 收到 offer → <code>setRemoteDescription</code> → <code>createAnswer()</code> → 回传 SDP</li>
+          <li>双方互相通过 WS 推送 <code>icecandidate</code>，直到找到最佳网络路径</li>
+          <li>连通后通过 <code>ontrack</code> 拿到对端 <code>MediaStream</code>，挂到 <code>&lt;video&gt;</code> 即可</li>
+        </ol>
+
+<pre><code class="language-js">// === 1. 采集媒体 ===
+const localStream = await navigator.mediaDevices.getUserMedia({
+  video: { width: 1280, height: 720, facingMode: 'user' },
+  audio: { echoCancellation: true, noiseSuppression: true },
+});
+localVideo.srcObject = localStream;
+
+// === 2. 建立连接（含 STUN/TURN） ===
+const pc = new RTCPeerConnection({
+  iceServers: [{ urls: 'stun:stun.l.google.com:19302' }],
+});
+
+// 把本地轨道加入连接
+localStream.getTracks().forEach((t) =&gt; pc.addTrack(t, localStream));
+
+// 收到对端轨道
+pc.ontrack = (e) =&gt; (remoteVideo.srcObject = e.streams[0]);
+
+// 收集 ICE 候选并通过信令发出去
+pc.onicecandidate = (e) =&gt; {
+  if (e.candidate) signaling.send({ type: 'ice', candidate: e.candidate });
+};
+
+// === 3. WebSocket 信令 ===
+const signaling = new WebSocket('wss://your-server/signal');
+signaling.onmessage = async ({ data }) =&gt; {
+  const msg = JSON.parse(data);
+  if (msg.type === 'offer') {
+    await pc.setRemoteDescription(msg.sdp);
+    const answer = await pc.createAnswer();
+    await pc.setLocalDescription(answer);
+    signaling.send({ type: 'answer', sdp: answer });
+  } else if (msg.type === 'answer') {
+    await pc.setRemoteDescription(msg.sdp);
+  } else if (msg.type === 'ice') {
+    await pc.addIceCandidate(msg.candidate);
+  }
+};
+
+// 主叫方发起
+const offer = await pc.createOffer();
+await pc.setLocalDescription(offer);
+signaling.send({ type: 'offer', sdp: offer });</code></pre>
+
+        <h4 style="color: var(--primary); margin-top: 14px">实战演示（本地回环 P2P）</h4>
+        <p class="muted">
+          下方在<strong>同一页面</strong>建立两个 RTCPeerConnection 互连，把摄像头画面通过真实的 WebRTC 链路传到「远端」窗口。
+          首次点击会请求摄像头权限。<br />
+          ⚠️ 浏览器要求 HTTPS 或 <code>localhost</code> 才能调用摄像头。
+        </p>
+
+        <div class="rtc-stage">
+          <div class="rtc-box">
+            <div class="rtc-label">📷 本地摄像头（A）</div>
+            <video id="localVideo" autoplay playsinline muted></video>
+            <div class="rtc-meta" id="localMeta">未启动</div>
+          </div>
+          <div class="rtc-box">
+            <div class="rtc-label">🌐 远端接收（B）· 经 WebRTC 传输</div>
+            <video id="remoteVideo" autoplay playsinline></video>
+            <div class="rtc-meta" id="remoteMeta">等待连接...</div>
+          </div>
+        </div>
+
+        <div class="rtc-controls">
+          <button class="btn btn-primary" id="rtcStart">📞 开启摄像头并通话</button>
+          <button class="btn btn-ghost" id="rtcMute" disabled>🔇 静音</button>
+          <button class="btn btn-ghost" id="rtcCam" disabled>📷 关闭摄像头</button>
+          <button class="btn btn-ghost" id="rtcScreen" disabled>🖥 切换屏幕共享</button>
+          <button class="btn btn-ghost" id="rtcShot" disabled>📸 截图</button>
+          <button class="btn btn-ghost" id="rtcHangup" disabled>📵 挂断</button>
+        </div>
+        <div class="rtc-shots" id="rtcShots"></div>
+        <pre class="demo-output" id="rtcLog"></pre>
+
+        <h4 style="color: var(--primary); margin-top: 14px">关键知识点</h4>
+        <div class="grid-2">
+          <div>
+            <h4>SDP（Session Description Protocol）</h4>
+            <ul>
+              <li>描述「我支持的编解码、分辨率、加密方式」</li>
+              <li>双方协商出共同支持的能力</li>
+              <li>是<strong>纯文本</strong>，可在 console 打印 offer 看一下</li>
+            </ul>
+          </div>
+          <div>
+            <h4>ICE / STUN / TURN</h4>
+            <ul>
+              <li><b>ICE</b>：枚举所有可能的网络路径</li>
+              <li><b>STUN</b>：帮你查到自己的公网 IP</li>
+              <li><b>TURN</b>：双方都在严格 NAT 后时的中继服务器</li>
+            </ul>
+          </div>
+          <div>
+            <h4>媒体约束（Constraints）</h4>
+            <ul>
+              <li><code>video: { width, height, frameRate, facingMode }</code></li>
+              <li><code>audio: { echoCancellation, noiseSuppression, autoGainControl }</code></li>
+              <li><code>getDisplayMedia()</code>：屏幕共享</li>
+            </ul>
+          </div>
+          <div>
+            <h4>常见扩展能力</h4>
+            <ul>
+              <li><b>DataChannel</b>：基于同一连接的低延迟数据通道（聊天/文件）</li>
+              <li><b>SFU 架构</b>：多人会议必备（Janus / mediasoup / LiveKit）</li>
+              <li><b>录制</b>：MediaRecorder + Blob</li>
+              <li><b>美颜/虚拟背景</b>：Canvas/WebGL/MediaStreamTrackProcessor</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7.12 多人会议 SFU 架构 -->
+      <div class="card demo">
+        <h3>7.12 多人会议 — SFU 中转架构</h3>
+        <p>
+          上一节的 P2P 只适合 1v1 或最多 3 人。人数变多时，每人都要把自己的流上传给 (N-1) 个人，
+          上行带宽呈 <b>O(N²)</b> 爆炸。生产级多人会议必须走<strong>中转服务器</strong>。
+        </p>
+
+        <h4 style="color: var(--primary); margin-top: 14px">三种架构对比</h4>
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>架构</th><th>拓扑</th><th>上行带宽</th><th>服务器压力</th><th>画质</th><th>适用</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Mesh (P2P)</b></td><td>人人互连</td>
+              <td>O(N-1) 份</td><td>无</td><td>高</td><td>≤3 人</td>
+            </tr>
+            <tr>
+              <td><b>SFU 转发</b></td><td>上传 1 份，服务器复制分发</td>
+              <td>O(1) 份</td><td>中（只转发）</td><td>高</td><td>会议、直播连麦</td>
+            </tr>
+            <tr>
+              <td><b>MCU 混流</b></td><td>服务器解码/合成后再编码下发</td>
+              <td>O(1) 份</td><td>高（算力贵）</td><td>受损</td><td>兼容老设备/电话接入</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4 style="color: var(--primary); margin-top: 14px">SFU 协议流程</h4>
+        <ol class="step-list">
+          <li>每个参会者通过 <b>WebSocket</b> 连到信令服务器，发送 <code>join(roomId)</code></li>
+          <li>服务器返回当前房间成员列表</li>
+          <li>参会者与 <b>SFU</b> 建立一条 <code>RTCPeerConnection</code>：
+            <ul>
+              <li>上行 (publish)：把本地轨道 <code>addTrack</code> 给 SFU</li>
+              <li>下行 (subscribe)：SFU 把其他成员的轨道 <code>addTrack</code> 推给自己</li>
+            </ul>
+          </li>
+          <li>有人加入/离开时，SFU 通过 WS 通知所有人，动态 <code>addTrack / removeTrack</code></li>
+          <li>离开时关闭 PC，停止轨道</li>
+        </ol>
+
+<pre><code class="language-js">// 参会者侧伪代码
+const ws = new WebSocket('wss://sfu.example/ws');
+const pc = new RTCPeerConnection({ iceServers: [...] });
+
+ws.onopen = () =&gt; ws.send(JSON.stringify({ cmd: 'join', room: 'R-1', uid }));
+
+ws.onmessage = async ({ data }) =&gt; {
+  const msg = JSON.parse(data);
+  switch (msg.cmd) {
+    case 'peer-join':
+      await subscribe(msg.uid);   // 订阅新成员的流
+      break;
+    case 'peer-leave':
+      removeVideo(msg.uid);       // 清理 UI
+      break;
+    case 'answer':
+      await pc.setRemoteDescription(msg.sdp);
+      break;
+  }
+};
+
+// 上行：发布自己
+localStream.getTracks().forEach((t) =&gt; pc.addTrack(t, localStream));
+const offer = await pc.createOffer();
+await pc.setLocalDescription(offer);
+ws.send(JSON.stringify({ cmd: 'publish', sdp: offer }));
+
+// 下行：收到别人的轨道时渲染
+pc.ontrack = (e) =&gt; renderTile(e.streams[0], e.track.id);</code></pre>
+
+        <h4 style="color: var(--primary); margin-top: 14px">实战演示（模拟 SFU Hub）</h4>
+        <p class="muted">
+          下方在本页面内用一个 <code>SfuHub</code> 纯 JS 类模拟中转服务器：真实摄像头只打开一份（
+          <code>getUserMedia</code>），然后通过 Hub "分发"给多个虚拟参会者，每个参会者独立渲染一个画面格。
+          真实项目里把 Hub 替换成 mediasoup/Janus/LiveKit 服务端即可。
+        </p>
+
+        <div class="sfu-panel">
+          <div class="sfu-controls">
+            <button class="btn btn-primary" id="sfuJoinSelf">🎤 我加入会议</button>
+            <button class="btn btn-ghost" id="sfuAddBot" disabled>➕ 增加参会者</button>
+            <button class="btn btn-ghost" id="sfuKickBot" disabled>➖ 减少参会者</button>
+            <button class="btn btn-ghost" id="sfuMuteAll" disabled>🔇 全员静音</button>
+            <button class="btn btn-ghost" id="sfuShareScreen" disabled>🖥 广播屏幕</button>
+            <button class="btn btn-ghost" id="sfuLeave" disabled>🚪 离开会议</button>
+            <span class="sfu-stat" id="sfuStat">未在会议中</span>
+          </div>
+
+          <div class="sfu-grid" id="sfuGrid"></div>
+
+          <div class="sfu-info">
+            <div>
+              <b>📊 SFU 实时状态</b>
+              <pre class="demo-output" id="sfuLog"></pre>
+            </div>
+            <div>
+              <b>📡 上行/下行带宽模拟</b>
+              <ul class="sfu-band" id="sfuBand">
+                <li>我的上行：<b id="bwUp">0 Mbps</b>（始终 1 份）</li>
+                <li>我的下行：<b id="bwDown">0 Mbps</b>（随人数线性增长）</li>
+                <li>SFU 服务器转发总量：<b id="bwFanout">0 Mbps</b></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="color: var(--primary); margin-top: 14px">生产级要点</h4>
+        <div class="grid-2">
+          <div>
+            <h4>Simulcast（分层编码）</h4>
+            <ul>
+              <li>同一路视频编多个码率（高/中/低）</li>
+              <li>SFU 根据订阅者网络自动选层</li>
+              <li>主讲人高清，小窗口低清，省带宽</li>
+            </ul>
+          </div>
+          <div>
+            <h4>SVC 可伸缩编码</h4>
+            <ul>
+              <li>一路码流包含多时域/空域层</li>
+              <li>比 Simulcast 更省上行</li>
+              <li>VP9 / AV1 / H.265 支持</li>
+            </ul>
+          </div>
+          <div>
+            <h4>QoS 保障</h4>
+            <ul>
+              <li>NACK / FEC / PLI：丢包补偿</li>
+              <li>JitterBuffer：抖动平滑</li>
+              <li>拥塞控制：GCC / BBR</li>
+            </ul>
+          </div>
+          <div>
+            <h4>开源方案</h4>
+            <ul>
+              <li><b>mediasoup</b>：Node.js，灵活，社区最活</li>
+              <li><b>Janus</b>：C 写的老牌稳</li>
+              <li><b>LiveKit</b>：Go 写的云原生，自带客户端 SDK</li>
+              <li><b>Pion</b>：纯 Go WebRTC 栈</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7.13 WebRTC 深度解析 -->
+      <div class="card demo">
+        <h3>7.13 WebRTC 深度解析 — 协议栈 / DataChannel / 质量监控</h3>
+        <p>
+          WebRTC 不是一个 API，而是一<strong>整套实时通信协议栈</strong>。它把复杂的音视频采集、编解码、
+          网络传输、NAT 穿透、加密、QoS 全部封装成三个核心对象：
+          <code>MediaStream</code>、<code>RTCPeerConnection</code>、<code>RTCDataChannel</code>。
+        </p>
+
+        <h4 style="color: var(--primary); margin-top: 14px">协议栈全景</h4>
+<pre><code class="language-html">┌──────────────────────────────────────────────────┐
+│  JavaScript API：getUserMedia / RTCPeerConnection │
+├──────────────────────────────────────────────────┤
+│       SRTP（加密音视频）     │    SCTP（数据）     │
+├──────────────────────────────────────────────────┤
+│              DTLS（密钥协商 / 加密）               │
+├──────────────────────────────────────────────────┤
+│    ICE（候选枚举）  +  STUN（打洞）  +  TURN（中继） │
+├──────────────────────────────────────────────────┤
+│                        UDP                        │
+└──────────────────────────────────────────────────┘</code></pre>
+        <ul>
+          <li><b>ICE</b>：综合调度 STUN/TURN，产出可达的"候选对"</li>
+          <li><b>DTLS</b>：握手生成密钥；<b>SRTP/SCTP</b> 基于它加密</li>
+          <li>音视频走 <b>SRTP</b>；任意数据走 <b>SCTP</b>（DataChannel）</li>
+          <li>WebRTC 默认<strong>全程 E2E 加密</strong>，无法关闭</li>
+        </ul>
+
+        <h4 style="color: var(--primary); margin-top: 14px">NAT 类型与穿透成功率</h4>
+        <table class="cmp-table">
+          <thead>
+            <tr><th>NAT 类型</th><th>映射规则</th><th>穿透成功率</th><th>备注</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Full Cone</td><td>IP+端口外网固定</td><td>✅ 很高</td><td>家用路由器常见</td></tr>
+            <tr><td>Restricted Cone</td><td>按远端 IP 限制</td><td>✅ 高</td><td>大部分办公网</td></tr>
+            <tr><td>Port Restricted</td><td>按 IP+端口限制</td><td>⚠️ 中</td><td>STUN 仍可穿</td></tr>
+            <tr><td>Symmetric NAT</td><td>每个目的地址映射不同端口</td><td>❌ 低</td><td>必须 TURN 中继（对称型）</td></tr>
+          </tbody>
+        </table>
+        <p class="muted">经验值：纯 STUN ≈ 70%~80%，加 TURN 可达 99%+，生产必须部署 TURN。</p>
+
+        <h4 style="color: var(--primary); margin-top: 14px">RTCDataChannel — 被忽视的利器</h4>
+        <p>
+          同一条 PeerConnection 上可开多个 DataChannel，用于<strong>任意二进制/文本数据</strong>。
+          相比 WebSocket 的优势：
+        </p>
+        <ul>
+          <li>✅ <b>P2P</b>：数据不过服务器，零延迟、零费用</li>
+          <li>✅ <b>可选 UDP 或 TCP 语义</b>：游戏用 unordered + maxRetransmits=0，文件用 ordered reliable</li>
+          <li>✅ <b>默认加密</b>（DTLS-SRTP）</li>
+          <li>⚠️ 受 MTU 限制（~16KB），大文件需<strong>分片</strong></li>
+        </ul>
+
+<pre><code class="language-js">// 创建可靠有序（默认，类似 TCP）
+const chat = pc.createDataChannel('chat');
+
+// 游戏用 "不可靠+无序"（类似 UDP，延迟最低）
+const game = pc.createDataChannel('game', {
+  ordered: false,
+  maxRetransmits: 0,
+});
+
+chat.onopen    = () =&gt; chat.send('hi');
+chat.onmessage = (e) =&gt; console.log('收到：', e.data);
+
+// 发二进制
+const ab = new Uint8Array([1, 2, 3]).buffer;
+chat.send(ab);</code></pre>
+
+        <!-- Demo 1：DataChannel 聊天 + 文件传输 -->
+        <h4 style="color: var(--primary); margin-top: 14px">实战 A：DataChannel P2P 聊天 & 文件传输</h4>
+        <p class="muted">
+          在同页面建立 dcA ↔ dcB，通过 DataChannel 传输文本和文件（自动分片）。
+          真实场景下这就是协同编辑、游戏同步、WebRTC 网盘（如 snapdrop.net）的底层。
+        </p>
+
+        <div class="dc-stage">
+          <div class="dc-col">
+            <div class="dc-label">👤 Alice</div>
+            <div class="dc-log" id="dcLogA"></div>
+            <div class="dc-row">
+              <input id="dcInputA" placeholder="输入消息..." />
+              <button class="btn btn-primary" id="dcSendA">发送</button>
+              <label class="btn btn-ghost">
+                📎 发文件
+                <input type="file" id="dcFileA" hidden />
+              </label>
+            </div>
+          </div>
+          <div class="dc-col">
+            <div class="dc-label">👤 Bob</div>
+            <div class="dc-log" id="dcLogB"></div>
+            <div class="dc-row">
+              <input id="dcInputB" placeholder="输入消息..." />
+              <button class="btn btn-primary" id="dcSendB">发送</button>
+              <label class="btn btn-ghost">
+                📎 发文件
+                <input type="file" id="dcFileB" hidden />
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="dc-progress" id="dcProgress"></div>
+
+        <!-- Demo 2：实时质量监控 getStats -->
+        <h4 style="color: var(--primary); margin-top: 14px">实战 B：实时质量监控（getStats API）</h4>
+        <p>
+          生产级 WebRTC 必须监控 <code>pc.getStats()</code>，用来观察：RTT、丢包率、抖动、码率、帧率、分辨率。
+          下方面板每秒采样一次并折线展示：
+        </p>
+
+        <div class="stats-panel">
+          <div class="stats-grid" id="statsCards">
+            <div class="stat-card"><span>RTT 往返时延</span><b id="sRtt">-- ms</b></div>
+            <div class="stat-card"><span>丢包率</span><b id="sLoss">--</b></div>
+            <div class="stat-card"><span>抖动 Jitter</span><b id="sJitter">-- ms</b></div>
+            <div class="stat-card"><span>码率 Bitrate</span><b id="sBitrate">-- kbps</b></div>
+            <div class="stat-card"><span>帧率 FPS</span><b id="sFps">--</b></div>
+            <div class="stat-card"><span>分辨率</span><b id="sSize">--</b></div>
+          </div>
+          <canvas id="statsChart" height="140"></canvas>
+          <div class="ctrl-row">
+            <button class="btn btn-primary" id="statsStart">▶ 开始采样（需先打开 7.11 摄像头）</button>
+            <button class="btn btn-ghost" id="statsStop" disabled>■ 停止</button>
+            <span class="badge">源：7.11 视频通话的 pcB</span>
+          </div>
+        </div>
+        <p class="muted">
+          💡 <code>getStats()</code> 返回的是 <code>RTCStatsReport</code>（Map）。
+          常用 type：<code>inbound-rtp</code>、<code>outbound-rtp</code>、<code>candidate-pair</code>、<code>remote-inbound-rtp</code>。
+        </p>
+
+        <!-- Demo 3：MediaRecorder 录制 -->
+        <h4 style="color: var(--primary); margin-top: 14px">实战 C：MediaRecorder 本地录制</h4>
+        <p>
+          WebRTC 的 <code>MediaStream</code> 可直接交给 <code>MediaRecorder</code> 编码成 webm 文件，
+          实现"本地录制"而无需走服务端，广泛用于在线面试录像、Loom 式屏幕录制。
+        </p>
+<pre><code class="language-js">const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9' });
+const chunks = [];
+recorder.ondataavailable = (e) =&gt; chunks.push(e.data);
+recorder.onstop = () =&gt; {
+  const blob = new Blob(chunks, { type: 'video/webm' });
+  const url = URL.createObjectURL(blob);
+  // 触发下载
+};
+recorder.start(1000); // 每 1s 触发一次 ondataavailable</code></pre>
+        <div class="ctrl-row">
+          <button class="btn btn-primary" id="recStart">🎬 开始录制（本地摄像头）</button>
+          <button class="btn btn-ghost" id="recStop" disabled>⏹ 停止并下载</button>
+          <span class="badge">已录制 <b id="recTime">0</b> 秒</span>
+        </div>
+
+        <!-- 安全与合规 -->
+        <h4 style="color: var(--primary); margin-top: 14px">安全 / 合规关键点</h4>
+        <div class="grid-2">
+          <div>
+            <h4>E2E 加密</h4>
+            <ul>
+              <li>DTLS 握手后所有流量加密，SFU 也看不到明文</li>
+              <li>SFU 架构下可用 <b>Insertable Streams</b> 做业务层二次加密（如 Zoom 真端到端）</li>
+              <li>证书指纹通过 SDP 交换，防中间人</li>
+            </ul>
+          </div>
+          <div>
+            <h4>隐私泄漏</h4>
+            <ul>
+              <li>默认 ICE 会暴露本机内网 IP（"WebRTC IP Leak"）</li>
+              <li><code>iceTransportPolicy: 'relay'</code> 强制走 TURN，隐藏真实 IP</li>
+              <li>mDNS 候选（Chrome 默认）已缓解该问题</li>
+            </ul>
+          </div>
+          <div>
+            <h4>常见坑</h4>
+            <ul>
+              <li>必须 HTTPS（localhost 除外）</li>
+              <li>Safari 对编解码支持较新版才全</li>
+              <li>移动端后台会挂起 PeerConnection</li>
+              <li>TURN 费用：流量按出口计，生产要限流</li>
+            </ul>
+          </div>
+          <div>
+            <h4>进阶主题</h4>
+            <ul>
+              <li><b>Perfect Negotiation</b>：应对双方同时 offer 的协商模式</li>
+              <li><b>RTCRtpTransceiver</b>：细粒度控制收发方向</li>
+              <li><b>Trickle ICE</b>：候选产出即发送，不等全部完成</li>
+              <li><b>RTP Header Extensions</b>：扩展 RTP 头，实现带宽估计等</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7.14 现代 Web API 实战集 -->
+      <div class="card demo">
+        <h3>7.14 现代 Web API 实战集 — 12 个让网页像原生 App 的能力</h3>
+        <p>
+          浏览器正在加速补齐"原生应用才有"的能力：底层网络、编解码、硬件、支付、认证、XR……
+          下面每个 API 都配<strong>能力检测 + 代码示例 + 实测按钮</strong>。
+          ⚠️ 部分 API 仅在 <b>Chrome / Edge</b> 支持，Firefox/Safari 会显示"未支持"。
+        </p>
+
+        <!-- 网络类 -->
+        <div class="api-grid">
+
+          <!-- WebTransport -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">🚀</span>
+              <div><b>WebTransport</b><span class="api-tag">HTTP/3 · 网络</span></div>
+              <span class="api-support" data-api="webtransport"></span>
+            </div>
+            <p>基于 HTTP/3 (QUIC) 的多路复用通道，同时提供<strong>可靠流</strong>（类 TCP）与<strong>不可靠数据报</strong>（类 UDP）。相比 WebSocket，队头阻塞更少、连接迁移更快。</p>
+<pre><code class="language-js">const wt = new WebTransport('https://example.com/wt');
+await wt.ready;
+
+// 1) 不可靠数据报（游戏状态同步）
+const writer = wt.datagrams.writable.getWriter();
+writer.write(new Uint8Array([1, 2, 3]));
+
+// 2) 可靠双向流（大文件/信令）
+const stream = await wt.createBidirectionalStream();
+const w = stream.writable.getWriter();
+w.write(new TextEncoder().encode('hello'));</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="wtCheck">检测能力</button>
+              <span class="api-out" id="wtOut">--</span>
+            </div>
+          </div>
+
+          <!-- WebCodecs -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">🎞</span>
+              <div><b>WebCodecs</b><span class="api-tag">音视频 · 编解码</span></div>
+              <span class="api-support" data-api="webcodecs"></span>
+            </div>
+            <p>直接访问浏览器的<strong>硬件编解码器</strong>，拿到逐帧 <code>VideoFrame</code>，可做 Web 版剪映、帧级合成、WebRTC 前处理。</p>
+<pre><code class="language-js">const decoder = new VideoDecoder({
+  output: (frame) =&gt; {
+    canvasCtx.drawImage(frame, 0, 0);
+    frame.close(); // 必须手动释放！
+  },
+  error: (e) =&gt; console.error(e),
+});
+decoder.configure({ codec: 'vp09.00.10.08' });
+decoder.decode(chunk);</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="wcCheck">列出支持的编码器</button>
+              <pre class="api-out api-out-big" id="wcOut">--</pre>
+            </div>
+          </div>
+
+          <!-- WebAssembly -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">⚡️</span>
+              <div><b>WebAssembly (WASM)</b><span class="api-tag">高性能计算</span></div>
+              <span class="api-support api-ok">✅ 全支持</span>
+            </div>
+            <p>近原生速度执行，承载 ffmpeg / Photoshop / Pyodide / SQLite / AutoCAD。下方实测：用 WASM 字节码算斐波那契，对比 JS 版本。</p>
+<pre><code class="language-js">// fib.wat 编译后加载
+const { instance } = await WebAssembly.instantiate(wasmBytes);
+instance.exports.fib(30); // ~1ms vs JS 10ms</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="wasmRun">跑分：JS vs WASM fib(35)</button>
+              <pre class="api-out api-out-big" id="wasmOut">--</pre>
+            </div>
+          </div>
+
+          <!-- Web Locks -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">🔒</span>
+              <div><b>Web Locks API</b><span class="api-tag">并发 · 同步</span></div>
+              <span class="api-support" data-api="locks"></span>
+            </div>
+            <p>跨 Tab / iframe / Worker 的<strong>异步互斥锁</strong>。最典型：多 Tab 打开时只让一个 Tab 刷 Token。</p>
+<pre><code class="language-js">await navigator.locks.request('auth-token', async (lock) =&gt; {
+  // 此块代码同一 origin 下同时只有一个在执行
+  const token = await refreshToken();
+  localStorage.setItem('token', token);
+});</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="lockRun">并发 5 次模拟抢锁</button>
+              <pre class="api-out api-out-big" id="lockOut">--</pre>
+            </div>
+          </div>
+
+          <!-- Payment Request -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">💳</span>
+              <div><b>Payment Request API</b><span class="api-tag">支付</span></div>
+              <span class="api-support" data-api="payment"></span>
+            </div>
+            <p>调起系统/浏览器原生支付面板（Apple Pay / Google Pay / 信用卡），<strong>无需手动填表</strong>。</p>
+<pre><code class="language-js">const req = new PaymentRequest(
+  [{ supportedMethods: 'basic-card' }],
+  {
+    total: { label: '订单', amount: { currency: 'CNY', value: '99.00' } },
+  }
+);
+const response = await req.show();
+await response.complete('success');</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="payRun">调起支付面板</button>
+              <span class="api-out" id="payOut">--</span>
+            </div>
+          </div>
+
+          <!-- WebAuthn -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">🔐</span>
+              <div><b>WebAuthn</b><span class="api-tag">无密码登录</span></div>
+              <span class="api-support" data-api="webauthn"></span>
+            </div>
+            <p>用<strong>指纹 / Face ID / 硬件密钥</strong>代替密码。底层是公私钥签名，网站只存公钥。</p>
+<pre><code class="language-js">// 注册（生成密钥对）
+const cred = await navigator.credentials.create({
+  publicKey: {
+    challenge,
+    rp: { name: 'My App' },
+    user: { id, name: 'zhangke', displayName: 'ZK' },
+    pubKeyCredParams: [{ type: 'public-key', alg: -7 }],
+  },
+});
+// 登录（验证签名）
+await navigator.credentials.get({ publicKey: { challenge } });</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="waRun">调起生物识别注册</button>
+              <pre class="api-out api-out-big" id="waOut">--</pre>
+            </div>
+          </div>
+
+          <!-- File Handling -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">📂</span>
+              <div><b>File Handling API</b><span class="api-tag">PWA · 系统集成</span></div>
+              <span class="api-support" data-api="filehandling"></span>
+            </div>
+            <p>让 PWA 注册为系统上某类文件（<code>.md</code> / <code>.txt</code>）的默认打开方式，双击即用网页打开。需要在 <code>manifest.json</code> 配置：</p>
+<pre><code class="language-json">{
+  "file_handlers": [{
+    "action": "/open",
+    "accept": { "text/markdown": [".md"] }
+  }]
+}</code></pre>
+<pre><code class="language-js">if ('launchQueue' in window) {
+  launchQueue.setConsumer(async (launchParams) =&gt; {
+    for (const handle of launchParams.files) {
+      const file = await handle.getFile();
+      editor.setValue(await file.text());
+    }
+  });
+}</code></pre>
+            <div class="api-demo">
+              <span class="api-out" id="fhOut">--</span>
+            </div>
+          </div>
+
+          <!-- Idle Detection -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">💤</span>
+              <div><b>Idle Detection API</b><span class="api-tag">状态感知</span></div>
+              <span class="api-support" data-api="idle"></span>
+            </div>
+            <p>感知用户是否离开电脑（系统级空闲），聊天/网银场景自动改"离开"或退出登录。</p>
+<pre><code class="language-js">const idle = new IdleDetector();
+idle.addEventListener('change', () =&gt; {
+  console.log(idle.userState, idle.screenState);
+  // active / idle          unlocked / locked
+});
+await idle.start({ threshold: 60_000 });</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="idleRun">开始监听（60s 阈值）</button>
+              <span class="api-out" id="idleOut">--</span>
+            </div>
+          </div>
+
+          <!-- Clipboard 高级 -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">📋</span>
+              <div><b>Clipboard API（高级）</b><span class="api-tag">富内容</span></div>
+              <span class="api-support api-ok">✅ 全支持</span>
+            </div>
+            <p>除纯文本外还能读写 <strong>HTML / 图片 / 自定义 MIME</strong>，实现 Office/Docs 那种"保留格式粘贴"。</p>
+<pre><code class="language-js">// 写入富文本 + 纯文本
+await navigator.clipboard.write([
+  new ClipboardItem({
+    'text/html':  new Blob(['&lt;b&gt;hi&lt;/b&gt;'], { type: 'text/html' }),
+    'text/plain': new Blob(['hi'], { type: 'text/plain' }),
+  }),
+]);
+// 读取图片
+const items = await navigator.clipboard.read();
+for (const it of items) {
+  if (it.types.includes('image/png')) {
+    const blob = await it.getType('image/png');
+  }
+}</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="cbWrite">写入富文本</button>
+              <button class="btn btn-ghost" id="cbRead">读取剪贴板</button>
+              <pre class="api-out api-out-big" id="cbOut">--</pre>
+            </div>
+          </div>
+
+          <!-- WebHID -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">🎮</span>
+              <div><b>WebHID API</b><span class="api-tag">硬件 · HID</span></div>
+              <span class="api-support" data-api="hid"></span>
+            </div>
+            <p>直连 HID 设备：游戏手柄、绘图板侧键、条码枪、专业键盘。</p>
+<pre><code class="language-js">const [device] = await navigator.hid.requestDevice({ filters: [] });
+await device.open();
+device.oninputreport = (e) =&gt; {
+  const data = new Uint8Array(e.data.buffer);
+  console.log(device.productName, data);
+};</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="hidRun">选择并连接 HID</button>
+              <pre class="api-out api-out-big" id="hidOut">--</pre>
+            </div>
+          </div>
+
+          <!-- Web Serial -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">🔌</span>
+              <div><b>Web Serial API</b><span class="api-tag">硬件 · 串口</span></div>
+              <span class="api-support" data-api="serial"></span>
+            </div>
+            <p>直接与 Arduino / STM32 / GPS / 工业仪表通信，浏览器里做 3D 打印机控制台、烧录工具。</p>
+<pre><code class="language-js">const port = await navigator.serial.requestPort();
+await port.open({ baudRate: 115200 });
+
+const reader = port.readable.getReader();
+while (true) {
+  const { value, done } = await reader.read();
+  if (done) break;
+  console.log(new TextDecoder().decode(value));
+}</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="serialRun">选择串口</button>
+              <pre class="api-out api-out-big" id="serialOut">--</pre>
+            </div>
+          </div>
+
+          <!-- Web MIDI -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">🎹</span>
+              <div><b>Web MIDI API</b><span class="api-tag">音乐设备</span></div>
+              <span class="api-support" data-api="midi"></span>
+            </div>
+            <p>连接电子琴/鼓垫/MIDI 控制器。按键触发时收到 <code>[status, note, velocity]</code> 三字节消息。</p>
+<pre><code class="language-js">const midi = await navigator.requestMIDIAccess();
+midi.inputs.forEach((input) =&gt; {
+  input.onmidimessage = (e) =&gt; {
+    const [cmd, note, vel] = e.data;
+    if (cmd === 144 &amp;&amp; vel &gt; 0) playNote(note);
+  };
+});</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="midiRun">请求 MIDI 权限</button>
+              <pre class="api-out api-out-big" id="midiOut">--</pre>
+            </div>
+          </div>
+
+          <!-- WebXR -->
+          <div class="api-card">
+            <div class="api-head">
+              <span class="api-icon">🥽</span>
+              <div><b>WebXR Device API</b><span class="api-tag">VR · AR</span></div>
+              <span class="api-support" data-api="xr"></span>
+            </div>
+            <p>在 VR 头显 (Quest) / AR 眼镜 (HoloLens) 里渲染 Web 内容，获取手柄与手势。免下载 App 的 Web VR。</p>
+<pre><code class="language-js">if (navigator.xr) {
+  const ok = await navigator.xr.isSessionSupported('immersive-vr');
+  if (ok) {
+    const session = await navigator.xr.requestSession('immersive-vr');
+    // 接入 Three.js: renderer.xr.setSession(session)
+  }
+}</code></pre>
+            <div class="api-demo">
+              <button class="btn btn-primary" id="xrRun">检测 VR / AR 支持</button>
+              <pre class="api-out api-out-big" id="xrOut">--</pre>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="muted" style="margin-top: 14px">
+          📌 以上 API 中，涉及硬件或需要用户手势授权的（HID/Serial/MIDI/Payment/WebAuthn）会弹出浏览器原生选择框；
+          硬件类在没有连接对应设备时会返回空列表，这是正常行为。
+        </p>
+      </div>
+
+      <!-- 7.15 流程图与画布编排 -->
+      <div class="card demo">
+        <h3>7.15 流程图 & 画布编排 — 可视化工作流的核心技术</h3>
+        <p>
+          低代码平台、工作流引擎、白板、数据血缘、DAG 编排、节点式 Shader 编辑器……背后都是同一套能力：
+          <strong>节点（Node）+ 连线（Edge）+ 画布（Canvas）</strong>。本节系统拆解三种主流实现方案。
+        </p>
+
+        <!-- 渲染方案对比 -->
+        <h4 style="color: var(--primary); margin-top: 14px">三大渲染方案对比</h4>
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>方案</th><th>定位</th><th>性能上限</th><th>优势</th><th>劣势</th><th>适合</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>DOM + SVG</b></td><td>元素级</td>
+              <td>≤ 千级节点</td>
+              <td>可用 CSS 样式/事件/无障碍，矢量清晰</td>
+              <td>大量节点时 DOM 树重</td>
+              <td>流程图、ER 图、思维导图</td>
+            </tr>
+            <tr>
+              <td><b>Canvas 2D</b></td><td>栅格绘制</td>
+              <td>万级节点</td>
+              <td>绘制快、内存省</td>
+              <td>没有 DOM 节点，命中测试要自己算</td>
+              <td>白板、绘图、大规模 DAG</td>
+            </tr>
+            <tr>
+              <td><b>WebGL / Pixi</b></td><td>GPU 加速</td>
+              <td>十万级节点</td>
+              <td>性能天花板最高，支持粒子/滤镜</td>
+              <td>学习曲线陡，调试难</td>
+              <td>地图、游戏、可视化大屏</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 主流库 -->
+        <h4 style="color: var(--primary); margin-top: 14px">主流开源库</h4>
+        <div class="grid-2">
+          <div>
+            <h4>流程图 / DAG</h4>
+            <ul>
+              <li><b>AntV X6</b>：阿里，功能完善，SVG + 插件生态</li>
+              <li><b>LogicFlow</b>：滴滴，更轻量，BPMN 场景</li>
+              <li><b>React Flow</b>：React 生态首选，社区最活</li>
+              <li><b>Drawflow</b>：Vanilla JS，一键集成</li>
+              <li><b>jsPlumb</b>：老牌，连线算法强</li>
+              <li><b>Dagre</b>：只做自动布局，常与上述配合</li>
+            </ul>
+          </div>
+          <div>
+            <h4>画布 / 白板 / 图形</h4>
+            <ul>
+              <li><b>Konva.js</b>：Canvas 2D 图形框架，事件系统完整</li>
+              <li><b>Fabric.js</b>：图像编辑，类 Photoshop</li>
+              <li><b>tldraw</b>：现代白板库，Figma 级交互</li>
+              <li><b>Excalidraw</b>：手绘风白板，内嵌友好</li>
+              <li><b>Rough.js</b>：手绘风 SVG/Canvas</li>
+              <li><b>PixiJS</b>：WebGL 2D 渲染引擎</li>
+            </ul>
+          </div>
+          <div>
+            <h4>核心算法</h4>
+            <ul>
+              <li><b>自动布局</b>：Dagre（层次）、ELK（Eclipse Layout Kernel）、Force（力导向）</li>
+              <li><b>连线路由</b>：曼哈顿路由、贝塞尔曲线、正交避让</li>
+              <li><b>命中测试</b>：AABB 包围盒、四叉树（Quadtree）加速</li>
+              <li><b>缩放</b>：CTM（Current Transform Matrix）+ 矩阵逆运算</li>
+            </ul>
+          </div>
+          <div>
+            <h4>典型应用</h4>
+            <ul>
+              <li><b>低代码</b>：钉钉宜搭、腾讯微搭、Mendix</li>
+              <li><b>工作流</b>：审批流、BPMN</li>
+              <li><b>数据编排</b>：Airflow UI、Dify、n8n、LangFlow</li>
+              <li><b>白板协作</b>：Figma、Miro、腾讯文档画板</li>
+              <li><b>AI 流水线</b>：ComfyUI、Rivet</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 核心原理 -->
+        <h4 style="color: var(--primary); margin-top: 14px">核心原理</h4>
+        <ol class="step-list">
+          <li><b>数据模型</b>：<code>{ nodes: [...], edges: [...] }</code>，节点存坐标/类型，边存 source/target</li>
+          <li><b>渲染</b>：根据数据绘制节点与连线（声明式），状态变化 → Diff → 最小重绘</li>
+          <li><b>交互</b>：拖拽移动节点 / 从锚点拖出连线 / 框选 / 右键菜单 / 键盘删除</li>
+          <li><b>连线路径</b>：贝塞尔曲线 <code>M x1 y1 C cx1 cy1, cx2 cy2, x2 y2</code></li>
+          <li><b>命中测试</b>：<code>elementFromPoint</code> (DOM) 或几何判断（Canvas）</li>
+          <li><b>Undo/Redo</b>：命令模式 + 栈，或直接保存快照</li>
+          <li><b>协同</b>：CRDT (Yjs / Automerge) 或 OT 算法</li>
+        </ol>
+
+        <!-- 连线路径示意代码 -->
+<pre><code class="language-js">/** 贝塞尔连线 · 横向流程图最常用 */
+function bezierPath(s, t) {
+  const dx = Math.max(Math.abs(t.x - s.x) * 0.5, 50);
+  return `M ${s.x} ${s.y} C ${s.x + dx} ${s.y}, ${t.x - dx} ${t.y}, ${t.x} ${t.y}`;
+}
+
+/** 正交连线（曼哈顿） · BPMN 风格 */
+function orthogonalPath(s, t) {
+  const mx = (s.x + t.x) / 2;
+  return `M ${s.x} ${s.y} L ${mx} ${s.y} L ${mx} ${t.y} L ${t.x} ${t.y}`;
+}</code></pre>
+
+        <!-- ========== Demo A：SVG 流程编辑器 ========== -->
+        <h4 style="color: var(--primary); margin-top: 18px">🧩 实战 A：SVG 流程编辑器（纯原生，零依赖）</h4>
+        <p class="muted">
+          完整支持：<b>左侧拖入节点</b> · <b>拖动移动</b> · <b>锚点拖出连线</b> · <b>点击选中</b> ·
+          <b>Delete 删除</b> · <b>导出 JSON</b> · <b>导入 JSON</b> · <b>Undo/Redo</b>。
+        </p>
+
+        <div class="flow-editor">
+          <!-- 工具箱 -->
+          <div class="flow-palette">
+            <div class="flow-pal-title">拖入节点</div>
+            <div class="flow-pal-item" draggable="true" data-type="start">
+              <span class="pal-dot start"></span>开始
+            </div>
+            <div class="flow-pal-item" draggable="true" data-type="task">
+              <span class="pal-dot task"></span>任务
+            </div>
+            <div class="flow-pal-item" draggable="true" data-type="cond">
+              <span class="pal-dot cond"></span>判断
+            </div>
+            <div class="flow-pal-item" draggable="true" data-type="end">
+              <span class="pal-dot end"></span>结束
+            </div>
+
+            <div class="flow-pal-title" style="margin-top: 14px">操作</div>
+            <button class="flow-mini-btn" id="flowUndo">↶ 撤销</button>
+            <button class="flow-mini-btn" id="flowRedo">↷ 重做</button>
+            <button class="flow-mini-btn" id="flowClear">🗑 清空</button>
+            <button class="flow-mini-btn" id="flowExport">⬇ 导出 JSON</button>
+            <button class="flow-mini-btn" id="flowImport">⬆ 导入 JSON</button>
+            <button class="flow-mini-btn" id="flowAuto">🪄 自动布局</button>
+          </div>
+
+          <!-- 画布 -->
+          <div class="flow-stage" id="flowStage">
+            <svg id="flowSvg" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- 箭头 -->
+                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+                        markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#6c8cff" />
+                </marker>
+                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(154,163,199,0.15)" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid)" />
+              <g id="flowEdges"></g>
+              <g id="flowNodes"></g>
+              <path id="flowGhost" d="" fill="none" stroke="#25d4a8" stroke-width="2" stroke-dasharray="5 5" />
+            </svg>
+            <div class="flow-tip" id="flowTip">
+              👈 从左侧拖入节点，鼠标<b>按住节点右侧锚点</b>拖到另一个节点即可连线
+            </div>
+          </div>
+        </div>
+
+        <details style="margin-top: 10px">
+          <summary style="cursor: pointer; color: var(--primary); font-size: 13px;">
+            📤 导出/导入 JSON（点击展开）
+          </summary>
+          <textarea id="flowJson" class="flow-json" placeholder="点击「导出 JSON」查看当前流程数据；修改后点「导入 JSON」应用。"></textarea>
+        </details>
+
+        <!-- ========== Demo B：Canvas 无限画布 ========== -->
+        <h4 style="color: var(--primary); margin-top: 18px">🎨 实战 B：Canvas 无限画布（Pan / Zoom / 坐标系）</h4>
+        <p class="muted">
+          所有画布工具（Figma / Miro / Excalidraw）的共同基础：一个<strong>可平移、可缩放</strong>的虚拟坐标系。
+          操作：<b>鼠标拖拽</b>平移 · <b>滚轮</b>缩放（以光标为中心）· <b>点击节点</b>选中 · <b>双击空白处</b>新建。
+        </p>
+
+        <div class="canvas-wrap">
+          <div class="canvas-toolbar">
+            <span class="canvas-info" id="canvasInfo">偏移 (0, 0) · 缩放 100%</span>
+            <button class="flow-mini-btn" id="canvasReset">🏠 回到原点</button>
+            <button class="flow-mini-btn" id="canvasAdd">➕ 随机添加 10 个</button>
+            <button class="flow-mini-btn" id="canvasFit">🔍 适配视图</button>
+          </div>
+          <canvas id="infCanvas" width="1200" height="500"></canvas>
+        </div>
+
+        <h4 style="color: var(--primary); margin-top: 14px">关键代码片段</h4>
+<pre><code class="language-js">/** 屏幕坐标 → 世界坐标（Pan/Zoom 的核心） */
+function screenToWorld(sx, sy, scale, offsetX, offsetY) {
+  return { x: (sx - offsetX) / scale, y: (sy - offsetY) / scale };
+}
+
+/** 以光标为中心缩放 —— Figma/Miro 的标准做法 */
+function zoomAt(cx, cy, delta) {
+  const factor = delta &gt; 0 ? 0.9 : 1.1;
+  const wx = (cx - offsetX) / scale;
+  const wy = (cy - offsetY) / scale;
+  scale *= factor;
+  offsetX = cx - wx * scale;
+  offsetY = cy - wy * scale;
+}</code></pre>
+
+        <!-- 选型建议 -->
+        <h4 style="color: var(--primary); margin-top: 14px">选型建议</h4>
+        <div class="grid-2">
+          <div>
+            <h4>🟢 业务项目推荐</h4>
+            <ul>
+              <li>React 项目 → <b>React Flow</b>（API 设计优秀）</li>
+              <li>Vue/多技术栈 → <b>AntV X6</b>（功能最全）</li>
+              <li>BPMN 流程 → <b>LogicFlow</b> 或 bpmn-js</li>
+              <li>白板 → 直接魔改 <b>tldraw</b> 或 <b>Excalidraw</b></li>
+            </ul>
+          </div>
+          <div>
+            <h4>🛠 自研时的常见坑</h4>
+            <ul>
+              <li>节点多时频繁 setState 会卡顿，建议 batch + 惰性渲染</li>
+              <li>SVG 连线用 <code>will-change</code> / <code>transform</code> 替代 d 属性频繁更新</li>
+              <li>拖拽用 <b>Pointer Events</b> 统一鼠标/触摸</li>
+              <li>撤销栈不要存全量快照，存 diff/命令</li>
+              <li>坐标系要区分"屏幕坐标" vs "世界坐标"，导出时用世界坐标</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 小程序开发 ========== -->
+    <section id="miniprogram" class="topic">
+      <h2 class="topic-title">⑧ 小程序开发 — 原生 & UniApp 跨端</h2>
+      <p class="topic-desc">
+        小程序是介于 H5 与原生之间的产物：用<strong>类 Web 技术栈</strong>开发，运行在宿主 App 提供的
+        <strong>受限 WebView + 原生渲染</strong>容器中，享受「免安装、秒开、可调用原生能力」的体验。
+      </p>
+
+      <!-- 8.1 原生小程序架构 -->
+      <div class="card">
+        <h3>8.1 原生微信小程序 — 双线程架构</h3>
+        <p>
+          小程序最大特色是<strong>逻辑层（AppService）与渲染层（WebView）物理隔离</strong>，两者通过
+          <code>Native 桥</code>通信。这样 JS 无法直接操作 DOM，既保证了安全沙箱，也为多端渲染（Skyline）打基础。
+        </p>
+<pre><code class="language-html">┌────────────────┐      postMessage      ┌────────────────┐
+│  渲染层 View    │ &lt;───────────────────&gt; │  逻辑层 Service │
+│  (WebView)     │      JSBridge         │  (JSCore/V8)   │
+│  WXML / WXSS   │                       │   app.js / 业务 │
+└────────┬───────┘                       └────────┬───────┘
+         │                                        │
+         └─────────── Native 层 ──────────────────┘
+            (网络 / 文件 / 相机 / 蓝牙 / 支付…)</code></pre>
+        <ul>
+          <li><b>逻辑层</b>：执行业务 JS，调用 <code>wx.*</code> API，通过 <code>setData</code> 把数据传给渲染层</li>
+          <li><b>渲染层</b>：每个页面一个独立 WebView，解析 WXML → 虚拟 DOM → 真实 DOM</li>
+          <li><b>通信代价</b>：<code>setData</code> 是跨线程 JSON 序列化，<strong>避免频繁大对象</strong></li>
+          <li><b>Skyline</b>：新一代渲染引擎，合并双线程，提升性能</li>
+        </ul>
+      </div>
+
+      <!-- 8.2 文件结构 -->
+      <div class="card">
+        <h3>8.2 原生小程序四件套</h3>
+        <div class="grid-2">
+          <div>
+            <h4>app.json（全局配置）</h4>
+<pre><code class="language-json">{
+  "pages": ["pages/index/index", "pages/my/my"],
+  "window": {
+    "navigationBarTitleText": "我的小程序",
+    "navigationBarBackgroundColor": "#6c8cff"
+  },
+  "tabBar": {
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页" },
+      { "pagePath": "pages/my/my",      "text": "我的" }
+    ]
+  }
+}</code></pre>
+          </div>
+          <div>
+            <h4>index.wxml（模板）</h4>
+<pre><code class="language-html">&lt;view class="wrap"&gt;
+  &lt;text&gt;{{ title }}&lt;/text&gt;
+  &lt;button bindtap="onTap"&gt;点击 +1&lt;/button&gt;
+  &lt;view wx:for="{{ list }}" wx:key="id"&gt;
+    {{ item.name }}
+  &lt;/view&gt;
+&lt;/view&gt;</code></pre>
+          </div>
+          <div>
+            <h4>index.wxss（样式，rpx 自适配）</h4>
+<pre><code class="language-css">.wrap {
+  padding: 32rpx;
+  background: #f7f8fc;
+}
+/* 750rpx = 屏幕宽，自动按比例换算 */
+button { margin-top: 24rpx; }</code></pre>
+          </div>
+          <div>
+            <h4>index.js（页面逻辑）</h4>
+<pre><code class="language-js">Page({
+  data: { title: '你好小程序', count: 0, list: [] },
+  onLoad() {
+    wx.request({
+      url: 'https://api.example.com/list',
+      success: (res) =&gt; this.setData({ list: res.data }),
+    });
+  },
+  onTap() {
+    this.setData({ count: this.data.count + 1 });
+  },
+});</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8.3 生命周期 -->
+      <div class="card">
+        <h3>8.3 生命周期与路由</h3>
+        <div class="grid-2">
+          <div>
+            <h4>App 生命周期</h4>
+            <ul>
+              <li><code>onLaunch</code>：启动（只一次，可做登录）</li>
+              <li><code>onShow</code>：进入前台</li>
+              <li><code>onHide</code>：切后台</li>
+              <li><code>onError</code>：全局错误</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Page 生命周期</h4>
+            <ul>
+              <li><code>onLoad(query)</code>：首次加载，收参数</li>
+              <li><code>onShow</code> / <code>onHide</code></li>
+              <li><code>onReady</code>：首次渲染完成</li>
+              <li><code>onPullDownRefresh</code> / <code>onReachBottom</code></li>
+            </ul>
+          </div>
+          <div>
+            <h4>路由 API</h4>
+            <ul>
+              <li><code>wx.navigateTo</code>：入栈（可返回）</li>
+              <li><code>wx.redirectTo</code>：替换当前</li>
+              <li><code>wx.switchTab</code>：切 tabBar 页</li>
+              <li><code>wx.reLaunch</code>：清栈重启</li>
+            </ul>
+          </div>
+          <div>
+            <h4>组件化</h4>
+            <ul>
+              <li><code>Component({ properties, data, methods })</code></li>
+              <li>支持 <code>behaviors</code>（类似 mixin）</li>
+              <li>自定义组件可用 <code>observers</code> 监听数据变化</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8.4 UniApp -->
+      <div class="card">
+        <h3>8.4 UniApp — 一套代码跨 10+ 端</h3>
+        <p>
+          基于 <b>Vue.js</b>，编译产物可跑在：微信 / 支付宝 / 抖音 / QQ / 百度 / 快手 / 钉钉 小程序，H5，
+          iOS App，Android App（App 端基于 WeeX / uni-app X）。
+        </p>
+
+        <h4 style="color: var(--primary); margin-top: 10px">项目结构</h4>
+<pre><code class="language-html">my-uni-app/
+├── pages/
+│   └── index/index.vue    # 页面（Vue 单文件）
+├── components/            # 公共组件
+├── static/                # 静态资源
+├── App.vue                # 入口
+├── main.js                # 挂载
+├── manifest.json          # 各端配置（appid 等）
+├── pages.json             # 路由 + TabBar
+└── uni.scss               # 全局样式变量</code></pre>
+
+        <h4 style="color: var(--primary); margin-top: 14px">Vue 3 + Composition API 写法</h4>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;view class="page"&gt;
+    &lt;text&gt;{{ title }}&lt;/text&gt;
+    &lt;button @click="add"&gt;点击 {{ count }}&lt;/button&gt;
+    &lt;!-- #ifdef MP-WEIXIN --&gt;
+    &lt;button open-type="getUserInfo"&gt;微信授权&lt;/button&gt;
+    &lt;!-- #endif --&gt;
+  &lt;/view&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+const title = ref('UniApp Demo');
+const count = ref(0);
+const add = () =&gt; {
+  count.value++;
+  uni.showToast({ title: '+1', icon: 'success' });
+};
+&lt;/script&gt;
+
+&lt;style lang="scss"&gt;
+.page { padding: 32rpx; }
+&lt;/style&gt;</code></pre>
+
+        <h4 style="color: var(--primary); margin-top: 14px">条件编译</h4>
+        <p>UniApp 在同一源码里用注释区分不同平台逻辑，编译时只保留对应端代码：</p>
+<pre><code class="language-js">// #ifdef H5
+window.location.href = '/login';
+// #endif
+
+// #ifdef MP-WEIXIN
+wx.login({ success: (r) =&gt; console.log(r.code) });
+// #endif
+
+// #ifdef APP-PLUS
+plus.runtime.openURL('tel:10086');
+// #endif</code></pre>
+      </div>
+
+      <!-- 8.5 API 对比 -->
+      <div class="card">
+        <h3>8.5 常用 API 对比（原生 wx / UniApp uni）</h3>
+        <table class="cmp-table">
+          <thead>
+            <tr><th>能力</th><th>原生小程序</th><th>UniApp</th><th>说明</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>网络请求</td><td><code>wx.request</code></td><td><code>uni.request</code></td><td>Promise 化需自封装</td></tr>
+            <tr><td>本地存储</td><td><code>wx.setStorageSync</code></td><td><code>uni.setStorageSync</code></td><td>单 key 上限 1MB</td></tr>
+            <tr><td>路由跳转</td><td><code>wx.navigateTo</code></td><td><code>uni.navigateTo</code></td><td>页面栈最多 10 层</td></tr>
+            <tr><td>Toast</td><td><code>wx.showToast</code></td><td><code>uni.showToast</code></td><td>支持 icon/image</td></tr>
+            <tr><td>登录</td><td><code>wx.login</code></td><td><code>uni.login({ provider })</code></td><td>UniApp 统一多端鉴权</td></tr>
+            <tr><td>支付</td><td><code>wx.requestPayment</code></td><td><code>uni.requestPayment</code></td><td>需后端签名</td></tr>
+            <tr><td>文件上传</td><td><code>wx.uploadFile</code></td><td><code>uni.uploadFile</code></td><td>支持 multipart</td></tr>
+            <tr><td>扫码</td><td><code>wx.scanCode</code></td><td><code>uni.scanCode</code></td><td>需相机权限</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 8.6 小程序模拟器 -->
+      <div class="card demo">
+        <h3>8.6 实战演示：网页版小程序模拟器</h3>
+        <p class="muted">
+          下方在浏览器里模拟了一个完整的小程序环境（手机外壳 + 顶部胶囊 + TabBar + 多页面 + 下拉刷新 +
+          常用 <code>wx.*</code> API），真实复刻「双线程通信 → setData 驱动视图」的行为。
+        </p>
+
+        <div class="mp-simulator" id="mpSim">
+          <div class="mp-device">
+            <!-- 胶囊 -->
+            <div class="mp-statusbar">
+              <span class="mp-time" id="mpTime">12:00</span>
+              <span class="mp-signal">●●●●</span>
+            </div>
+            <div class="mp-navbar">
+              <span class="mp-title" id="mpNavTitle">首页</span>
+              <span class="mp-capsule">
+                <span>⋯</span><span class="mp-divider"></span><span>○</span>
+              </span>
+            </div>
+
+            <!-- 页面容器 -->
+            <div class="mp-viewport" id="mpViewport">
+              <!-- 下拉刷新指示器 -->
+              <div class="mp-refresh" id="mpRefresh">↓ 下拉刷新</div>
+              <div class="mp-pages" id="mpPages"></div>
+            </div>
+
+            <!-- TabBar -->
+            <div class="mp-tabbar" id="mpTabbar">
+              <div class="mp-tab active" data-page="home">
+                <div class="mp-tab-icon">🏠</div><div>首页</div>
+              </div>
+              <div class="mp-tab" data-page="list">
+                <div class="mp-tab-icon">📋</div><div>列表</div>
+              </div>
+              <div class="mp-tab" data-page="me">
+                <div class="mp-tab-icon">👤</div><div>我的</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 控制台：展示 setData / 生命周期日志 -->
+          <div class="mp-console">
+            <div class="mp-console-title">
+              <b>🛠 小程序控制台</b>
+              <button class="mp-console-clear" id="mpClear">清空</button>
+            </div>
+            <pre id="mpLog"></pre>
+          </div>
+        </div>
+
+        <p class="muted" style="margin-top: 10px">
+          ✅ 已实现：页面切换（<code>switchTab</code>）、<code>setData</code> 响应式更新、<code>showToast</code>、
+          <code>showModal</code>、<code>request</code>（模拟）、<code>setStorageSync</code>、下拉刷新、生命周期日志。
+        </p>
+      </div>
+
+      <!-- 8.7 踩坑 & 选型 -->
+      <div class="card">
+        <h3>8.7 踩坑 & 技术选型</h3>
+        <div class="grid-2">
+          <div>
+            <h4>性能优化</h4>
+            <ul>
+              <li>避免频繁 <code>setData</code>，合并批量更新</li>
+              <li>只传变化字段：<code>setData({ 'list[0].name': 'x' })</code></li>
+              <li>长列表用虚拟列表（recycle-view）</li>
+              <li>图片用 CDN + WebP</li>
+              <li>分包加载 / 独立分包 / 分包预下载</li>
+            </ul>
+          </div>
+          <div>
+            <h4>如何选型</h4>
+            <ul>
+              <li>只做微信：<b>原生</b>性能最佳、更新最快</li>
+              <li>多端（抖音/支付宝/H5/App）：<b>UniApp / Taro</b></li>
+              <li>团队熟悉 React：<b>Taro 4</b>（React + 编译）</li>
+              <li>团队熟悉 Vue：<b>UniApp</b></li>
+              <li>极致性能 + 新能力：<b>uni-app x</b>（原生渲染）</li>
+            </ul>
+          </div>
+          <div>
+            <h4>调试工具</h4>
+            <ul>
+              <li>微信开发者工具（必装）</li>
+              <li>vConsole：真机调试控制台</li>
+              <li>抓包：Charles / Whistle + 证书</li>
+              <li>HBuilderX：UniApp 官方 IDE</li>
+            </ul>
+          </div>
+          <div>
+            <h4>发布流程</h4>
+            <ul>
+              <li>配置合法域名（request / socket / upload）</li>
+              <li>体验版 → 审核版 → 正式版</li>
+              <li>版本回滚、灰度发布</li>
+              <li>数据助手监控：崩溃率 / 启动耗时</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Web 游戏开发 ========== -->
+    <section id="gamedev" class="topic">
+      <h2 class="topic-title">⑨ Web 游戏开发 — 浏览器里的 3A 之梦</h2>
+      <p class="topic-desc">
+        现代浏览器已经具备完整的游戏开发能力：GPU 渲染、接近原生的性能、低延迟网络、手柄/震动/音频全配套。
+        从《Among Us Web》到 Unity 导出的 3D 游戏，Web 正成为真正的游戏平台。
+      </p>
+
+      <!-- 9.1 渲染技术对比 -->
+      <div class="card">
+        <h3>9.1 核心渲染技术</h3>
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>技术</th><th>定位</th><th>性能上限</th><th>适用场景</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Canvas 2D</b></td><td>最基础 2D 绘图</td><td>数千精灵</td>
+              <td>休闲小游戏、棋牌、2D 动画</td>
+            </tr>
+            <tr>
+              <td><b>WebGL</b></td><td>GPU 加速渲染（OpenGL ES）</td><td>数万物体</td>
+              <td>所有 60fps 的 3D Web 游戏，Three.js/Babylon.js 底层</td>
+            </tr>
+            <tr>
+              <td><b>WebGPU</b></td><td>下一代 GPU 接口（Vulkan/Metal 风格）</td><td>十万+物体</td>
+              <td>3A Web 游戏、光追、粒子爆炸、GPGPU 计算</td>
+            </tr>
+            <tr>
+              <td><b>WebAssembly</b></td><td>高性能引擎代码</td><td>接近原生</td>
+              <td>Unity / Unreal 导出游戏的核心逻辑</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 9.2 引擎对比 -->
+      <div class="card">
+        <h3>9.2 主流游戏引擎与框架</h3>
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>引擎</th><th>类型</th><th>特点</th><th>适合游戏</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><b>Phaser</b></td><td>2D 全能引擎</td><td>开源 + 完整游戏循环 / WebGL+Canvas 自动切换</td><td>平台跳跃、RPG、俯视角射击、卡牌</td></tr>
+            <tr><td><b>PixiJS</b></td><td>2D 渲染库</td><td>极致性能 / 无游戏循环</td><td>弹幕、贪吃蛇大作战、UI 密集</td></tr>
+            <tr><td><b>Three.js</b></td><td>3D 渲染库</td><td>最流行的 WebGL 抽象</td><td>3D 展示、第一/三人称探索、低模游戏</td></tr>
+            <tr><td><b>Babylon.js</b></td><td>3D 引擎</td><td>微软主导 / 内置物理+GUI+粒子 / 早期支持 WebGPU</td><td>高品质 3D、大型场景</td></tr>
+            <tr><td><b>Unity（WebGL 导出）</b></td><td>传统大型引擎</td><td>导出 HTML+JS+WASM，生态最大</td><td>中大型 2D/3D 商业游戏</td></tr>
+            <tr><td><b>Unreal（Pixel Streaming）</b></td><td>3A 引擎</td><td>画质顶级，导出体积大</td><td>高端演示、云游戏</td></tr>
+            <tr><td><b>Cocos Creator</b></td><td>国产 H5 引擎</td><td>微信小游戏首选 / 双端打包</td><td>微信小游戏、4399 H5、捕鱼棋牌</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 9.3 网络同步 -->
+      <div class="card">
+        <h3>9.3 实时网络同步方案</h3>
+        <div class="grid-2">
+          <div>
+            <h4>🔌 传输协议</h4>
+            <ul>
+              <li><b>WebSocket</b>：回合制、休闲、棋牌。简单可靠</li>
+              <li><b>WebRTC DataChannel</b>：P2P 低延迟，1v1 格斗/双人协作</li>
+              <li><b>WebTransport</b>：基于 HTTP/3，不可靠数据报 + 可靠流，FPS/MOBA 最佳</li>
+              <li><b>WebSocket over QUIC</b>：兼顾兼容性与低延迟</li>
+            </ul>
+          </div>
+          <div>
+            <h4>🎯 同步策略</h4>
+            <ul>
+              <li><b>权威服务器</b>：服务端持最终裁决，反作弊刚需</li>
+              <li><b>帧同步（Lockstep）</b>：只传指令，所有端独立计算；带宽省但需确定性引擎（MOBA/格斗）</li>
+              <li><b>状态同步</b>：服务端算完发状态；通用但带宽大（FPS/MMO）</li>
+              <li><b>客户端预测 + 服务端校正</b>：位置提前渲染，错了再回滚</li>
+              <li><b>插值 / 外推</b>：平滑其他玩家画面</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9.4 辅助 API -->
+      <div class="card">
+        <h3>9.4 游戏辅助 API</h3>
+        <div class="grid-2">
+          <div>
+            <h4>输入</h4>
+            <ul>
+              <li><b>Gamepad API</b>：Xbox / PS / Switch Pro 手柄</li>
+              <li><b>Pointer Lock API</b>：隐藏鼠标，FPS 必备</li>
+              <li><b>Keyboard Lock API</b>：在全屏时锁定 Tab/Esc</li>
+              <li><b>Touch / Pointer Events</b>：移动端虚拟摇杆</li>
+            </ul>
+          </div>
+          <div>
+            <h4>输出</h4>
+            <ul>
+              <li><b>Web Audio API</b>：3D 空间音效、节奏精确</li>
+              <li><b>Fullscreen API</b>：沉浸式全屏</li>
+              <li><b>Vibration API</b>：移动端触觉反馈</li>
+              <li><b>Screen Orientation</b>：锁定横竖屏</li>
+              <li><b>Wake Lock</b>：防止屏幕休眠</li>
+            </ul>
+          </div>
+          <div>
+            <h4>性能</h4>
+            <ul>
+              <li><b>OffscreenCanvas</b>：渲染移至 Worker 不阻塞 UI</li>
+              <li><b>SharedArrayBuffer</b>：Worker 间零拷贝共享内存</li>
+              <li><b>requestAnimationFrame</b>：VSync 对齐的帧循环</li>
+              <li><b>performance.now()</b>：高精度时间戳</li>
+            </ul>
+          </div>
+          <div>
+            <h4>分发</h4>
+            <ul>
+              <li><b>PWA</b>：可安装到桌面</li>
+              <li><b>Cloud Gaming</b>：Pixel Streaming / GeForce NOW</li>
+              <li><b>WebXR</b>：VR/AR 游戏</li>
+              <li><b>微信小游戏</b>：基于 Web 技术的超级入口</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9.5 Demo A：Canvas 2D 小游戏 -->
+      <div class="card demo">
+        <h3>9.5 实战 A：Canvas 2D 小游戏（打砖块）</h3>
+        <p>
+          经典 Breakout，演示<strong>游戏循环</strong>、<strong>碰撞检测</strong>、<strong>输入处理</strong>三件套。
+          控制：<kbd>← →</kbd> 或鼠标/触屏拖动挡板。
+        </p>
+        <div class="game-stage">
+          <canvas id="breakoutCanvas" width="800" height="420"></canvas>
+          <div class="game-hud" id="breakoutHud">
+            <span>分数：<b id="bkScore">0</b></span>
+            <span>生命：<b id="bkLife">3</b></span>
+            <span>关卡：<b id="bkLevel">1</b></span>
+          </div>
+          <div class="game-overlay" id="breakoutOverlay">
+            <div>
+              <h3 style="margin:0 0 10px;font-size:22px">🎮 打砖块 Breakout</h3>
+              <p style="color:var(--muted);margin:0 0 14px">按空格或点击开始</p>
+              <button class="btn btn-primary" id="bkStart">开始游戏</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9.6 Demo B：Three.js 3D -->
+      <div class="card demo">
+        <h3>9.6 实战 B：Three.js 3D 场景（WebGL）</h3>
+        <p>
+          从 CDN 加载 Three.js，构建：带光照/阴影的地面 + 自转立方体 + 可旋转摄像机。
+          <strong>拖拽旋转、滚轮缩放</strong>。这是所有 3D Web 游戏的最小可运行模板。
+        </p>
+        <div class="game-stage">
+          <canvas id="threeCanvas"></canvas>
+          <div class="game-hud" id="threeHud">
+            <span>FPS：<b id="threeFps">--</b></span>
+            <span>Triangles：<b id="threeTri">--</b></span>
+            <span>Draw calls：<b id="threeDc">--</b></span>
+          </div>
+        </div>
+        <div class="ctrl-row" style="margin-top: 10px">
+          <button class="btn btn-primary" id="threeLoad">▶ 加载 Three.js 并启动</button>
+          <button class="btn btn-ghost" id="threeWire">线框模式</button>
+          <button class="btn btn-ghost" id="threeAdd">➕ 增加 50 个立方体</button>
+          <span class="badge">脚本首次加载约 150KB</span>
+        </div>
+<pre><code class="language-js">import * as THREE from 'three';
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+
+const geo = new THREE.BoxGeometry(1, 1, 1);
+const mat = new THREE.MeshStandardMaterial({ color: 0x6c8cff });
+const cube = new THREE.Mesh(geo, mat);
+scene.add(cube);
+
+scene.add(new THREE.DirectionalLight(0xffffff, 1));
+camera.position.z = 4;
+
+renderer.setAnimationLoop(() =&gt; {
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
+});</code></pre>
+      </div>
+
+      <!-- 9.7 Demo C：Web Audio 3D 空间音效 -->
+      <div class="card demo">
+        <h3>9.7 实战 C：Web Audio 3D 空间音效</h3>
+        <p>
+          用 <code>PannerNode</code> 实现<strong>空间化音频</strong>：拖动画布上的小球（音源），
+          中心是听众，离得近声音大、在哪侧从哪侧出来，就像真实 3D 游戏里脚步声定位一样。请戴耳机体验。
+        </p>
+        <div class="audio-stage">
+          <canvas id="audioCanvas" width="600" height="260"></canvas>
+          <div class="ctrl-row" style="margin-top: 10px">
+            <button class="btn btn-primary" id="audioStart">▶ 开始发声</button>
+            <button class="btn btn-ghost" id="audioStop">■ 停止</button>
+            <label>音色：
+              <select id="audioType">
+                <option value="sine">正弦 (sine)</option>
+                <option value="square">方波 (square)</option>
+                <option value="sawtooth">锯齿 (saw)</option>
+                <option value="triangle">三角 (triangle)</option>
+              </select>
+            </label>
+            <span class="badge">左声道 <b id="audioL">0</b> · 右 <b id="audioR">0</b></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9.8 Demo D：Gamepad / Fullscreen / Vibration -->
+      <div class="card demo">
+        <h3>9.8 实战 D：手柄 / 全屏 / 震动 / 屏幕方向</h3>
+        <div class="grid-2">
+          <div>
+            <h4>🎮 Gamepad API 实时面板</h4>
+            <p class="muted">插入 Xbox/PS 手柄并按任意键即可自动识别；没有手柄则显示未连接。</p>
+            <div id="gpPanel" class="gp-panel">
+              <div class="gp-empty" id="gpEmpty">暂未检测到手柄。请按手柄上任意键激活。</div>
+              <div class="gp-body" id="gpBody" style="display:none">
+                <div class="gp-name" id="gpName"></div>
+                <div class="gp-sticks">
+                  <div class="gp-stick">
+                    <div class="gp-circle"><div class="gp-dot" id="gpL"></div></div>
+                    <small>左摇杆</small>
+                  </div>
+                  <div class="gp-stick">
+                    <div class="gp-circle"><div class="gp-dot" id="gpR"></div></div>
+                    <small>右摇杆</small>
+                  </div>
+                </div>
+                <div class="gp-buttons" id="gpBtns"></div>
+                <button class="btn btn-ghost" id="gpVibrate">手柄震动 0.3s</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>🌐 其他游戏 API</h4>
+            <p class="muted">点击即真实调用浏览器原生能力。</p>
+            <div class="api-demo" style="flex-direction:column;align-items:stretch;gap:10px;">
+              <button class="btn btn-primary" id="fsBtn">🖥 全屏（Fullscreen API）</button>
+              <button class="btn btn-primary" id="vibBtn">📳 手机震动（Vibration）</button>
+              <button class="btn btn-primary" id="wakeBtn">💡 请求屏幕常亮（Wake Lock）</button>
+              <button class="btn btn-primary" id="lockBtnR">📐 锁定横屏（Orientation Lock）</button>
+              <button class="btn btn-primary" id="ptrLockBtn">🎯 鼠标锁定（FPS 模式）</button>
+              <pre class="api-out api-out-big" id="gameApiOut">点击上方按钮试试 →</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9.10 FPS 射击游戏 -->
+      <div class="card demo">
+        <h3>9.10 实战 E：FPS 射击游戏（5 把武器 + 手雷抛物 + 范围伤害）</h3>
+        <p>
+          一款完整的第一人称射击游戏：<b>5 把武器（手枪/步枪/狙击/霰弹/火箭筒）+ 手雷抛物 + 范围爆炸 +
+          Raycaster 命中判定 + 部位伤害 + 血量/护甲 + AI 敌人 + 复活机制</b>。
+          每把武器伤害/射速/弹道差异化，所有玩法均由纯 JS 实现。
+        </p>
+
+        <div class="explore-stage fps-stage">
+          <canvas id="exploreCanvas"></canvas>
+
+          <!-- 准星（支持散布动画） -->
+          <div class="fps-crosshair" id="fpsCrosshair">
+            <span class="ch-dot"></span>
+            <span class="ch-line ch-top"></span>
+            <span class="ch-line ch-bottom"></span>
+            <span class="ch-line ch-left"></span>
+            <span class="ch-line ch-right"></span>
+          </div>
+
+          <!-- 击中反馈（红色 X）-->
+          <div class="fps-hitmarker" id="fpsHitmarker"></div>
+
+          <!-- 受伤血色边缘 -->
+          <div class="fps-damage" id="fpsDamage"></div>
+
+          <!-- 顶部 HUD：FPS / 延迟 / 人数 -->
+          <div class="explore-hud">
+            <span>FPS：<b id="expFps">--</b></span>
+            <span>位置：<b id="expPos">(0, 0, 0)</b></span>
+            <span>在线：<b id="expOnline">1</b></span>
+            <span>延迟：<b id="expPing">-- ms</b></span>
+          </div>
+
+          <!-- 左下：血量/护甲 -->
+          <div class="fps-stats">
+            <div class="fps-bar-row">
+              <span class="fps-bar-label">❤ HP</span>
+              <div class="fps-bar">
+                <div class="fps-bar-fill hp" id="fpsHpBar" style="width:100%"></div>
+              </div>
+              <b id="fpsHp">100</b>
+            </div>
+            <div class="fps-bar-row">
+              <span class="fps-bar-label">🛡 护甲</span>
+              <div class="fps-bar">
+                <div class="fps-bar-fill ar" id="fpsArBar" style="width:100%"></div>
+              </div>
+              <b id="fpsAr">50</b>
+            </div>
+          </div>
+
+          <!-- 右下：武器 / 弹药 / 击杀 -->
+          <div class="fps-weapon">
+            <div class="fps-weapon-name" id="fpsWeaponName">🔫 AK-47</div>
+            <div class="fps-ammo">
+              <b id="fpsAmmo">30</b><span>/<i id="fpsAmmoTotal">90</i></span>
+            </div>
+            <div class="fps-grenade">
+              <span>💣 手雷 <b id="fpsNade">3</b></span>
+            </div>
+            <div class="fps-score">
+              <span>击杀 <b id="fpsKills">0</b></span>
+              <span>死亡 <b id="fpsDeaths">0</b></span>
+            </div>
+          </div>
+
+          <!-- 武器栏（1-5 切换） -->
+          <div class="fps-loadout" id="fpsLoadout">
+            <div class="loadout-slot" data-key="1">
+              <span class="slot-key">1</span>
+              <span class="slot-icon">🔫</span>
+              <span class="slot-name">手枪</span>
+            </div>
+            <div class="loadout-slot active" data-key="2">
+              <span class="slot-key">2</span>
+              <span class="slot-icon">🎯</span>
+              <span class="slot-name">步枪</span>
+            </div>
+            <div class="loadout-slot" data-key="3">
+              <span class="slot-key">3</span>
+              <span class="slot-icon">🔭</span>
+              <span class="slot-name">狙击</span>
+            </div>
+            <div class="loadout-slot" data-key="4">
+              <span class="slot-key">4</span>
+              <span class="slot-icon">💥</span>
+              <span class="slot-name">霰弹</span>
+            </div>
+            <div class="loadout-slot" data-key="5">
+              <span class="slot-key">5</span>
+              <span class="slot-icon">🚀</span>
+              <span class="slot-name">火箭筒</span>
+            </div>
+            <div class="loadout-slot" data-key="g">
+              <span class="slot-key">G</span>
+              <span class="slot-icon">💣</span>
+              <span class="slot-name">手雷</span>
+            </div>
+          </div>
+
+          <!-- 武器模型（右下假枪） -->
+          <div class="fps-gun" id="fpsGun">
+            <div class="gun-body"></div>
+            <div class="gun-barrel"></div>
+            <div class="gun-muzzle" id="fpsMuzzle"></div>
+          </div>
+
+          <!-- 击杀飞字 -->
+          <div class="fps-kill-feed" id="fpsKillFeed"></div>
+
+          <!-- 死亡/胜利遮罩 -->
+          <div class="fps-respawn hide" id="fpsRespawn">
+            <h3 id="fpsRespawnTitle">💀 你被击杀</h3>
+            <p id="fpsRespawnTip">3 秒后复活...</p>
+          </div>
+
+          <!-- 控制提示 -->
+          <div class="explore-controls">
+            <div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 移动 · <kbd>Shift</kbd> 跑</div>
+            <div><kbd>1</kbd>~<kbd>5</kbd> 切换武器 · <kbd>G</kbd> 投手雷</div>
+            <div>左键 开火 · <kbd>R</kbd> 换弹 · <kbd>Esc</kbd> 退出</div>
+          </div>
+
+          <!-- 开始遮罩 -->
+          <div class="explore-overlay" id="expOverlay">
+            <div>
+              <h3 style="margin:0 0 10px;font-size:22px">🎯 FPS 射击演练场</h3>
+              <p style="color:var(--muted);margin:0 0 14px">
+                点击加载场景 → 进入游戏 → 消灭所有 Bot！<br/>
+                鼠标左键开火，<kbd>R</kbd> 换弹，<kbd>Esc</kbd> 退出锁定
+              </p>
+              <label style="display:block;margin:0 0 12px;color:var(--muted);font-size:12px">
+                <input type="checkbox" id="expUseGltf" />
+                使用 GLTF 骨骼模型（1.5MB，默认用盒子以保证流畅）
+              </label>
+              <button class="btn btn-primary" id="expLoad">▶ 加载场景</button>
+              <button class="btn btn-ghost" id="expJoin" disabled>🤖 召唤 AI 敌人</button>
+            </div>
+          </div>
+
+          <!-- 击杀信息流 -->
+          <div class="explore-chat" id="expChat"></div>
+        </div>
+
+        <h4 style="color: var(--primary); margin-top: 14px">武器系统（5+1）</h4>
+        <table class="cmp-table">
+          <thead>
+            <tr><th>武器</th><th>伤害</th><th>射速</th><th>弹匣</th><th>散布</th><th>射程</th><th>特点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>🔫 手枪 Glock</td><td>22</td><td>200ms</td><td>15</td><td>0.8°</td><td>40m</td><td>精准、备弹无限</td></tr>
+            <tr><td>🎯 步枪 AK-47</td><td>32</td><td>100ms</td><td>30</td><td>1.5°</td><td>80m</td><td>全能、连发</td></tr>
+            <tr><td>🔭 狙击 AWP</td><td>120</td><td>1500ms</td><td>5</td><td>0°</td><td>200m</td><td>一枪致命，慢</td></tr>
+            <tr><td>💥 霰弹 SPAS-12</td><td>14×8</td><td>800ms</td><td>8</td><td>10°</td><td>20m</td><td>近战之王，散射 8 颗</td></tr>
+            <tr><td>🚀 火箭筒 RPG</td><td>120 + 范围 80</td><td>1500ms</td><td>1</td><td>0°</td><td>—</td><td>抛物线弹道 + 4m 爆炸</td></tr>
+            <tr><td>💣 手雷</td><td>范围 100</td><td>—</td><td>3 颗</td><td>—</td><td>—</td><td>抛物投掷 + 5m 爆炸</td></tr>
+          </tbody>
+        </table>
+
+        <h4 style="color: var(--primary); margin-top: 14px">核心系统设计</h4>
+        <div class="grid-2">
+          <div>
+            <h4>🔫 武器切换</h4>
+            <ul>
+              <li><kbd>1-5</kbd> 切换 5 把武器，<kbd>G</kbd> 投手雷</li>
+              <li>每把独立配置：damage / fireRate / magSize / spread / range / projectileType</li>
+              <li>霰弹一次射 8 条 raycast 模拟散射</li>
+              <li>狙击 spread=0 + 一发致命，体现"精准武器"差异</li>
+            </ul>
+          </div>
+          <div>
+            <h4>💣 投掷物 + 抛物线</h4>
+            <ul>
+              <li>手雷 = THREE.Mesh + 速度向量 v</li>
+              <li>每帧 <code>v.y -= g·dt</code>（重力 18m/s²）</li>
+              <li>触地或 1.5s 后 <strong>爆炸</strong>：5m 范围扣血</li>
+              <li>火箭弹 = 直线匀速 + 命中即炸（4m）</li>
+              <li>距离衰减：<code>dmg × (1 - dist/radius)</code></li>
+            </ul>
+          </div>
+          <div>
+            <h4>🎯 命中判定</h4>
+            <ul>
+              <li>子弹：<code>Raycaster</code> 取最近障碍/敌人</li>
+              <li>霰弹：8 条 ray 各自结算，点状散布</li>
+              <li>头/胸/腿三段倍率（2× / 1× / 0.75×）</li>
+              <li>距离衰减：<code>1 - dist/range</code></li>
+            </ul>
+          </div>
+          <div>
+            <h4>🛡 掩体战术</h4>
+            <ul>
+              <li>开局玩家在<strong>南掩体</strong>后</li>
+              <li>3 个 AI 分别藏在<strong>北/东/西</strong>掩体</li>
+              <li>AI 视野含<strong>遮挡判定</strong>，藏好真的安全</li>
+              <li>火箭/手雷可<strong>越过掩体</strong>清场</li>
+            </ul>
+          </div>
+        </div>
+
+<pre><code class="language-js">// 手雷抛物线
+function throwGrenade() {
+  const dir = camera.getWorldDirection(new THREE.Vector3());
+  const grenade = {
+    mesh: greenSphere,
+    pos: camera.position.clone(),
+    vel: dir.multiplyScalar(18).setY(8), // 初速度 + 抬头
+    bornT: now,
+  };
+  grenades.push(grenade);
+}
+
+// 每帧物理更新
+function updateGrenades(dt) {
+  for (const g of grenades) {
+    g.vel.y -= 18 * dt;          // 重力
+    g.pos.addScaledVector(g.vel, dt);
+    if (g.pos.y &lt;= 0.2 || age &gt; 1500) {
+      explode(g.pos, 100, 5);    // damage 100, radius 5m
+      remove(g);
+    }
+  }
+}
+
+// 范围伤害
+function explode(center, dmg, radius) {
+  for (const e of enemies) {
+    const dist = e.position.distanceTo(center);
+    if (dist &lt; radius) hitEnemy(e, dmg * (1 - dist/radius));
+  }
+  // 玩家也会被自己手雷炸到！
+  const myDist = camera.position.distanceTo(center);
+  if (myDist &lt; radius) takeDamage(dmg * (1 - myDist/radius));
+}</code></pre>
+      </div>
+
+      <!-- 9.11 Node.js 真实房间服务端 -->
+      <div class="card demo">
+        <h3>9.11 实战 F：真实 Node.js WebSocket 房间服务端</h3>
+        <p>
+          上一节用 <code>MockWs</code> 在浏览器里模拟服务端，下面给出<strong>可直接运行</strong>的 Node.js 版本。
+          支持多人房间、广播、心跳、断线清理。已附在项目根目录 <code>server/room-server.js</code>，一行命令启动：
+        </p>
+
+<pre><code class="language-html">npm install ws
+node server/room-server.js
+# 监听 ws://localhost:3001/room/{roomId}</code></pre>
+
+        <h4 style="color: var(--primary); margin-top: 14px">server/room-server.js 完整实现</h4>
+<pre><code class="language-js">// Node.js 18+ | pnpm add ws
+import { WebSocketServer } from 'ws';
+import { randomUUID } from 'node:crypto';
+
+const wss = new WebSocketServer({ port: 3001, path: '/room' });
+
+/** @type {Map&lt;string, Set&lt;WebSocket&gt;&gt;} */
+const rooms = new Map();
+/** @type {Map&lt;WebSocket, {uid: string, roomId: string, state: any}&gt;} */
+const clients = new Map();
+
+const join = (ws, roomId) =&gt; {
+  if (!rooms.has(roomId)) rooms.set(roomId, new Set());
+  rooms.get(roomId).add(ws);
+};
+const leave = (ws) =&gt; {
+  const info = clients.get(ws);
+  if (!info) return;
+  rooms.get(info.roomId)?.delete(ws);
+  clients.delete(ws);
+  broadcast(info.roomId, { type: 'peer-leave', uid: info.uid });
+};
+const broadcast = (roomId, msg, exclude) =&gt; {
+  const data = JSON.stringify(msg);
+  rooms.get(roomId)?.forEach((c) =&gt; {
+    if (c !== exclude &amp;&amp; c.readyState === 1) c.send(data);
+  });
+};
+
+wss.on('connection', (ws, req) =&gt; {
+  const roomId = new URL(req.url, 'http://x').pathname.split('/').pop() || 'lobby';
+  const uid = randomUUID().slice(0, 8);
+  clients.set(ws, { uid, roomId, state: {} });
+  join(ws, roomId);
+  ws.send(JSON.stringify({ type: 'welcome', uid, roomId }));
+  broadcast(roomId, { type: 'peer-join', uid }, ws);
+
+  // 心跳
+  ws.isAlive = true;
+  ws.on('pong', () =&gt; (ws.isAlive = true));
+
+  ws.on('message', (buf) =&gt; {
+    try {
+      const msg = JSON.parse(buf.toString());
+      const info = clients.get(ws);
+      if (msg.type === 'move') {
+        info.state = { x: msg.x, y: msg.y, z: msg.z, rot: msg.rot };
+        broadcast(roomId, { type: 'state', uid: info.uid, ...info.state }, ws);
+      } else if (msg.type === 'chat') {
+        broadcast(roomId, { type: 'chat', uid: info.uid, text: msg.text });
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  });
+
+  ws.on('close', () =&gt; leave(ws));
+});
+
+// 30s 心跳
+setInterval(() =&gt; {
+  wss.clients.forEach((ws) =&gt; {
+    if (!ws.isAlive) return ws.terminate();
+    ws.isAlive = false;
+    ws.ping();
+  });
+}, 30_000);
+
+console.log('🚀 Room server running on ws://localhost:3001/room/{roomId}');</code></pre>
+
+        <h4 style="color: var(--primary); margin-top: 14px">客户端接入（替换 MockWs）</h4>
+<pre><code class="language-js">const ws = new WebSocket('ws://localhost:3001/room/playground');
+
+ws.addEventListener('open', () =&gt; console.log('connected'));
+ws.addEventListener('message', (e) =&gt; {
+  const msg = JSON.parse(e.data);
+  switch (msg.type) {
+    case 'welcome':    myUid = msg.uid;                     break;
+    case 'peer-join':  chat(`${msg.uid} 加入`, 'join');      break;
+    case 'peer-leave': removeAvatar(msg.uid);               break;
+    case 'state':      setTarget(msg.uid, msg.x, msg.y, msg.z, msg.rot); break;
+    case 'chat':       chat(`${msg.uid}: ${msg.text}`);     break;
+  }
+});
+
+// 上报自己位置
+setInterval(() =&gt; {
+  if (ws.readyState !== 1) return;
+  ws.send(JSON.stringify({
+    type: 'move',
+    x: camera.position.x, y: camera.position.y, z: camera.position.z, rot: yaw,
+  }));
+}, 100);</code></pre>
+
+        <div class="ctrl-row">
+          <button class="btn btn-primary" id="realWsTry">🔗 尝试连接 ws://localhost:3001</button>
+          <span class="api-out" id="realWsOut">未连接</span>
+        </div>
+        <p class="muted">
+          💡 没装 Node.js 时点击会报错（正常），装好后 <code>node server/room-server.js</code> 再点。
+          房间 URL：<code>ws://localhost:3001/room/playground</code>
+        </p>
+      </div>
+
+      <!-- 9.12 三种传输协议对比 -->
+      <div class="card demo">
+        <h3>9.12 实战 G：WebSocket vs WebRTC vs WebTransport 对比</h3>
+        <p>
+          不同游戏类型对网络要求差异极大。下面是同一个"位置广播"协议在三种传输上的实现对比，
+          并模拟<strong>延迟、丢包、队头阻塞</strong>三种场景观察差异。
+        </p>
+
+        <h4 style="color: var(--primary); margin-top: 10px">能力与差异</h4>
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>能力</th><th>WebSocket</th><th>WebRTC DataChannel</th><th>WebTransport</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>底层</td><td>TCP</td><td>UDP + SCTP</td><td>UDP + QUIC (HTTP/3)</td></tr>
+            <tr><td>可靠传输</td><td>✅ 强制</td><td>✅ 可选</td><td>✅ Stream 模式</td></tr>
+            <tr><td>不可靠传输</td><td>❌</td><td>✅ unordered+noRetrans</td><td>✅ Datagram 模式</td></tr>
+            <tr><td>队头阻塞</td><td>❌ 有（TCP）</td><td>✅ 无</td><td>✅ 无（多路复用）</td></tr>
+            <tr><td>延迟</td><td>中（~50-200ms）</td><td>低（P2P ~20ms）</td><td>低（~20-50ms）</td></tr>
+            <tr><td>连接建立</td><td>HTTP Upgrade，1 RTT</td><td>信令+ICE，数秒</td><td>HTTP/3，0-1 RTT</td></tr>
+            <tr><td>浏览器支持</td><td>✅ 全</td><td>✅ 全</td><td>⚠️ Chrome 97+</td></tr>
+            <tr><td>典型场景</td><td>聊天、回合制</td><td>1v1 P2P、WebRTC 会议</td><td>FPS / MOBA / 大型 MMO</td></tr>
+          </tbody>
+        </table>
+
+        <h4 style="color: var(--primary); margin-top: 14px">三种协议的客户端代码对比</h4>
+        <div class="grid-2">
+          <div>
+            <h4>① WebSocket（最简单）</h4>
+<pre><code class="language-js">const ws = new WebSocket('wss://srv/room');
+ws.onmessage = (e) =&gt; handle(JSON.parse(e.data));
+ws.send(JSON.stringify(msg));
+// 所有包按发送顺序到达
+// 丢一个会卡住后面所有包</code></pre>
+          </div>
+          <div>
+            <h4>② WebRTC DataChannel（P2P）</h4>
+<pre><code class="language-js">const pc = new RTCPeerConnection({ iceServers });
+// "游戏模式"：不可靠、无序（类 UDP）
+const dc = pc.createDataChannel('game', {
+  ordered: false,
+  maxRetransmits: 0,
+});
+dc.onmessage = (e) =&gt; handle(e.data);
+dc.send(JSON.stringify(msg));</code></pre>
+          </div>
+          <div>
+            <h4>③ WebTransport Stream（可靠）</h4>
+<pre><code class="language-js">const wt = new WebTransport('https://srv/wt');
+await wt.ready;
+const stream = await wt.createBidirectionalStream();
+const writer = stream.writable.getWriter();
+writer.write(new TextEncoder().encode(JSON.stringify(msg)));
+// 多条 stream 互不阻塞</code></pre>
+          </div>
+          <div>
+            <h4>③' WebTransport Datagram（不可靠）</h4>
+<pre><code class="language-js">const wt = new WebTransport('https://srv/wt');
+await wt.ready;
+const w = wt.datagrams.writable.getWriter();
+w.write(new TextEncoder().encode(JSON.stringify(msg)));
+// 类 UDP，最低延迟
+// 不保证到达、不保证顺序
+// 适合每帧位置更新</code></pre>
+          </div>
+        </div>
+
+        <h4 style="color: var(--primary); margin-top: 14px">模拟三种传输的延迟与丢包</h4>
+        <p class="muted">下方模拟每秒发 20 个"位置包"，可调节延迟抖动与丢包率，观察三种协议下"感知延迟"差异：</p>
+        <div class="ctrl-row">
+          <label>延迟：<input type="range" id="simLatency" min="0" max="500" value="80" style="vertical-align:middle"/> <span id="simLatencyV">80</span>ms</label>
+          <label>丢包：<input type="range" id="simLoss" min="0" max="30" value="5"/> <span id="simLossV">5</span>%</label>
+          <button class="btn btn-primary" id="simStart">▶ 开始模拟</button>
+          <button class="btn btn-ghost" id="simStop" disabled>■ 停止</button>
+        </div>
+        <div class="sim-grid">
+          <div class="sim-col">
+            <h4>📦 WebSocket (TCP 有序)</h4>
+            <div class="sim-track" id="simWs"></div>
+            <div class="sim-stat">收到 <b id="simWsRecv">0</b> · 平均延迟 <b id="simWsLat">--</b>ms · 队头阻塞时全部卡住</div>
+          </div>
+          <div class="sim-col">
+            <h4>🎮 WebRTC DataChannel (UDP 不可靠)</h4>
+            <div class="sim-track" id="simRtc"></div>
+            <div class="sim-stat">收到 <b id="simRtcRecv">0</b> · 平均延迟 <b id="simRtcLat">--</b>ms · 丢了就丢了，不阻塞</div>
+          </div>
+          <div class="sim-col">
+            <h4>🚀 WebTransport Datagram</h4>
+            <div class="sim-track" id="simWt"></div>
+            <div class="sim-stat">收到 <b id="simWtRecv">0</b> · 平均延迟 <b id="simWtLat">--</b>ms · 不可靠但零阻塞</div>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:10px">
+          🎯 <b>结论</b>：在 5% 丢包率下，WebSocket 会出现"一卡一卡"（前面包丢需重传，后续包排队）；
+          WebRTC / WebTransport 不可靠模式只丢那一帧，后续完全不受影响。
+          FPS/MOBA 之所以强烈倾向 UDP，就是因为<b>宁愿丢一帧，也不要卡一秒</b>。
+        </p>
+      </div>
+
+      <!-- 9.9 选型 -->
+      <div class="card">
+        <h3>9.9 技术选型速查</h3>
+        <div class="grid-2">
+          <div>
+            <h4>按品类选</h4>
+            <ul>
+              <li><b>棋牌 / 卡牌 / 休闲</b>：Phaser + WebSocket</li>
+              <li><b>弹幕 / 贪吃蛇大作战</b>：PixiJS + Web Audio + WebRTC</li>
+              <li><b>3D 探索 / 独立</b>：Three.js 或 Babylon.js</li>
+              <li><b>MOBA / FPS</b>：Unity 或 Unreal 导出 + WebTransport + WebGPU</li>
+              <li><b>微信小游戏</b>：Cocos Creator</li>
+            </ul>
+          </div>
+          <div>
+            <h4>性能优化</h4>
+            <ul>
+              <li>纹理打包 TextureAtlas 减少 Draw Call</li>
+              <li>对象池（Pool）避免 GC 抖动</li>
+              <li>脏矩形：只重绘变化区域</li>
+              <li>OffscreenCanvas + Worker 分离逻辑与渲染</li>
+              <li>静态资源 HTTP/2 多路复用 / Brotli 压缩</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Frontend Compass · 用心写好每一行代码</p>
+      <p class="muted">本页全部演示均为纯 HTML/CSS/JS 实现，无任何依赖。</p>
+    </div>
+  </footer>
+
+  <a href="#home" class="to-top" id="toTop" aria-label="返回顶部">↑</a>
+
+  <script src="./assets/js/prism.js" defer></script>
+  <script src="./assets/js/main.js" defer></script>
+</body>
+</html>
